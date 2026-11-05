@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Cẩm nang KPI Wegolden</title>
+<title>Cẩm nang KPI WeGolden</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -62,7 +62,21 @@ header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background
 .theme-btn{border:1px solid var(--line);background:transparent;border-radius:999px;padding:4px 12px;font-size:.85rem;cursor:pointer}
 #themeBtn{font-size:1.05rem;padding:2px 10px;line-height:1.4}
 .seg.sm button{padding:3px 10px;font-size:.82rem}
-nav.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;margin:0 -20px;padding:0 20px}
+nav.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;margin:0;padding:0 20px;scroll-behavior:smooth}
+.tabs-wrap{position:relative;margin:0 -20px}
+.tabs-arr{position:absolute;top:0;bottom:3px;width:40px;border:0;z-index:2;font-size:1.4rem;font-weight:900;color:var(--ink);cursor:pointer;display:none;padding:0}
+.tabs-arr.l{left:0;background:linear-gradient(90deg,var(--surface) 55%,transparent);text-align:left;padding-left:8px}
+.tabs-arr.r{right:0;background:linear-gradient(270deg,var(--surface) 55%,transparent);text-align:right;padding-right:8px}
+.tabs-arr.on{display:block}
+.subtabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin:20px 0 0;overflow-x:auto;scrollbar-width:none}
+.subtabs button{border:0;background:none;padding:10px 18px;font-weight:700;font-size:.98rem;color:var(--ink-2);border-bottom:3px solid transparent;margin-bottom:-1px;cursor:pointer;white-space:nowrap}
+.subtabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--teal)}
+.subpane{display:none}.subpane.on{display:block}
+.oc-card.wide{grid-column:1/-1}
+.oc-list.grid5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+@media (max-width:1100px){.oc-list.grid5{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:720px){.oc-list.grid5{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:440px){.oc-list.grid5{grid-template-columns:1fr}}
 nav.tabs::-webkit-scrollbar{display:none}
 nav.tabs a{flex:none;text-decoration:none;color:var(--ink-2);font-weight:600;font-size:.92rem;padding:8px 12px 12px;border-bottom:3px solid transparent;white-space:nowrap}
 nav.tabs a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--gold)}
@@ -486,13 +500,14 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
   #cert{position:absolute;left:0;top:0;width:100%;margin:0}
   .no-print{display:none!important}
 }
+@media (min-width:1000px){nav.tabs{gap:4px}nav.tabs a{flex:1 1 0;min-width:0;white-space:normal;text-align:center;display:flex;align-items:center;justify-content:center;gap:6px;line-height:1.25;padding:8px 6px 10px}nav.tabs a .tn{margin-right:0;flex:none}.tabs-arr{display:none!important}}
 </style>
 </head>
 <body data-role="staff">
 <header class="top">
   <div class="top-inner">
     <div class="brand">
-      <div class="brand-l"><div class="coin" aria-hidden="true">W</div><h1 data-en="KPI Handbook <span>Wegolden</span>">Cẩm nang KPI <span>Wegolden</span></h1></div>
+      <div class="brand-l"><div class="coin" aria-hidden="true">W</div><h1 data-en="KPI Handbook <span>WeGolden</span>">Cẩm nang KPI <span>WeGolden</span></h1></div>
       <div class="brand-r">
         <div class="seg sm" role="group" aria-label="Ngôn ngữ / Language">
           <button type="button" data-lang="vi" aria-pressed="true">VI</button>
@@ -501,14 +516,16 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
         <button class="theme-btn" id="themeBtn" type="button" aria-label="Sáng/tối · Light/dark">◐</button>
       </div>
     </div>
+    <div class="tabs-wrap"><button type="button" class="tabs-arr l" aria-label="Scroll tabs left">‹</button>
     <nav class="tabs">
       <a href="#tong-quan" data-v="tong-quan"><span class="tn">1</span><span data-en="KPI Overview">Tổng quan KPI</span></a>
-      <a href="#marketing" data-v="marketing"><span class="tn">2</span><span data-en="Marketing KPIs">KPI Marketing</span></a>
-      <a href="#luong-net" data-v="luong-net"><span class="tn">3</span><span data-en="Sales, Net &amp; Salary KPIs">KPI Sales, Net &amp; Lương</span></a>
-      <a href="#chuong-trinh" data-v="chuong-trinh"><span class="tn">4</span><span data-en="BD &amp; Sales Special Programs">Chương trình đặc biệt BD &amp; Sales</span></a>
+      <a href="#marketing" data-v="marketing"><span class="tn">2</span><span data-en="Sales-Driven Marketing KPIs">KPI Marketing định hướng bán hàng</span></a>
+      <a href="#luong-net" data-v="luong-net"><span class="tn">3</span><span data-en="Salary &amp; Net Commission KPIs">KPI Lương &amp; Hoa hồng Net</span></a>
+      <a href="#chuong-trinh" data-v="chuong-trinh"><span class="tn">4</span><span data-en="Sales Special Programs">Chương trình đặc biệt cho Sales</span></a>
       <a href="#to-chuc" data-v="to-chuc"><span class="tn">5</span><span data-en="Organization &amp; Team Operations">Tổ chức &amp; vận hành team</span></a>
       <a href="#kiem-tra" data-v="kiem-tra"><span class="tn">6</span><span data-en="KPI Test &amp; Certification">Kiểm tra &amp; chứng nhận KPI</span></a>
     </nav>
+    <button type="button" class="tabs-arr r" aria-label="Scroll tabs right">›</button></div>
   </div>
 </header>
 
@@ -516,20 +533,20 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
 <!-- ================= 1. TỔNG QUAN ================= -->
 <section class="view" id="v-tong-quan">
   <div class="ov-hero">
-    <span class="pill gold" data-en="For all BD / Sales staff">Dành cho toàn bộ nhân sự BD / Sales</span>
+    <span class="pill gold" data-en="For Sales Staff &amp; Sales Leaders">Dành cho Nhân viên Sales &amp; Sales Leader</span>
     <h2 data-en="Two KPI Systems. One Performance Standard.">Hai hệ KPI. Một chuẩn hiệu suất.</h2>
-    <p class="lead" data-en="Every BD / Sales employee is expected to fulfil <b>both</b> KPI systems each month. One measures marketing activity and lead generation; the other measures sales results and Net. Together they determine your final salary.">Mọi nhân sự BD / Sales đều cần hoàn thành <b>cả hai</b> hệ KPI mỗi tháng. Một hệ đo hoạt động marketing và khả năng tạo khách tiềm năng, hệ còn lại đo kết quả kinh doanh và Net. Cả hai cùng quyết định lương thực nhận.</p>
+    <p class="lead" data-en="Every Sales employee is expected to fulfil <b>both</b> KPI systems each month. One measures marketing activity and lead generation; the other measures sales results and Net. Together they determine your final salary.">Mọi nhân sự Sales đều cần hoàn thành <b>cả hai</b> hệ KPI mỗi tháng. Một hệ đo hoạt động marketing và khả năng tạo khách tiềm năng, hệ còn lại đo kết quả kinh doanh và Net. Cả hai cùng quyết định lương thực nhận.</p>
     <div class="cta">
-      <a class="btn-link gold" href="#marketing"><span data-en="Marketing KPIs">KPI Marketing</span> →</a>
-      <a class="btn-link dark" href="#luong-net"><span data-en="Sales, Net &amp; Salary KPIs">KPI Sales, Net &amp; Lương</span> →</a>
+      <a class="btn-link gold" href="#marketing"><span data-en="Sales-Driven Marketing KPIs">KPI Marketing định hướng bán hàng</span> →</a>
+      <a class="btn-link dark" href="#luong-net"><span data-en="Salary &amp; Net Commission KPIs">KPI Lương &amp; Hoa hồng Net</span> →</a>
     </div>
   </div>
 
   <div class="sys">
     <div class="sys-card mk">
       <span class="pill gold" data-en="System 1">Hệ 1</span>
-      <h3 data-en="Marketing KPI">KPI Marketing</h3>
-      <ul data-en="<li>Focuses on <b>marketing activities, engagement and lead generation</b>.</li><li>Requirements <b>differ between Sales Staff and Sales Leaders</b>.</li><li>Your <b>monthly Marketing points</b> determine the salary entitlement percentage that applies.</li>"><li>Tập trung vào <b>hoạt động marketing, tương tác và tạo khách tiềm năng</b>.</li><li>Yêu cầu <b>khác nhau giữa Nhân viên Sales và Sales Leader</b>.</li><li><b>Tổng điểm Marketing mỗi tháng</b> quyết định tỷ lệ lương được hưởng.</li></ul>
+      <h3 data-en="Sales-Driven Marketing KPIs">KPI Marketing định hướng bán hàng</h3>
+      <ul data-en="<li>Leverage marketing activities to build credibility, strengthen your personal brand, and naturally attract potential clients to support long-term sales growth.</li><li>Requirements <b>differ between Sales Staff and Sales Leaders</b>.</li><li>Your <b>monthly Marketing points</b> determine the salary entitlement percentage that applies.</li>"><li>Tận dụng các hoạt động marketing để xây dựng uy tín, phát triển thương hiệu cá nhân và thu hút khách hàng tiềm năng một cách tự nhiên, từ đó hỗ trợ tăng trưởng doanh số bền vững.</li><li>Yêu cầu <b>khác nhau giữa Nhân viên Sales và Sales Leader</b>.</li><li><b>Tổng điểm Marketing mỗi tháng</b> quyết định tỷ lệ lương được hưởng.</li></ul>
       <div class="foot">
         <div class="mini-lab" data-en="Salary entitlement by Marketing points">Tỷ lệ lương được hưởng theo điểm Marketing</div>
         <div class="tierbar" aria-hidden="true">
@@ -540,13 +557,13 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
           <span style="height:100%">100%</span>
         </div>
         <p class="small muted" style="margin:0 0 14px" data-en="100% from 1,650 points. Details and calculator in tab 2.">100% từ 1.650 điểm. Chi tiết và máy tính điểm ở tab 2.</p>
-        <a class="btn-link ghost" href="#marketing"><span data-en="See Marketing KPI details">Xem chi tiết KPI Marketing</span> →</a>
+        <a class="btn-link ghost" href="#marketing"><span data-en="See Sales-Driven Marketing KPIs details">Xem chi tiết KPI Marketing định hướng bán hàng</span> →</a>
       </div>
     </div>
     <div class="x" aria-hidden="true">×</div>
     <div class="sys-card nt">
       <span class="pill teal" data-en="System 2">Hệ 2</span>
-      <h3 data-en="Sales &amp; Net KPI">KPI Sales &amp; Net</h3>
+      <h3 data-en="Salary &amp; Net Commission KPIs">KPI Lương &amp; Hoa hồng Net</h3>
       <ul data-en="<li>Two <b>core KPIs</b>: the Standard IB KPI and the Retail Client KPI.</li><li><b>Sandbox</b> is a separate program that applies to new Sales.</li><li>Your <b>Net KPI performance</b> determines how much salary, if any, is withheld.</li>"><li>Hai <b>KPI cốt lõi</b>: KPI IB chuẩn và KPI khách lẻ.</li><li><b>Sandbox</b> là chương trình riêng, áp dụng cho Sale mới.</li><li><b>Kết quả KPI Net</b> quyết định mức lương bị giữ lại (nếu có).</li></ul>
       <div class="foot">
         <div class="mini-lab" data-en="What is measured">Những gì được đo</div>
@@ -555,15 +572,15 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
           <div class="corechip"><span data-en="Retail Client KPI">KPI khách lẻ</span><small data-en="Core KPI">KPI cốt lõi</small></div>
           <div class="corechip sb">Sandbox<small data-en="Separate program">Chương trình riêng</small></div>
         </div>
-        <a class="btn-link ghost" href="#luong-net"><span data-en="See Sales, Net &amp; Salary details">Xem chi tiết KPI Sales, Net &amp; Lương</span> →</a>
+        <a class="btn-link ghost" href="#luong-net"><span data-en="See Salary &amp; Net Commission KPIs details">Xem chi tiết KPI Lương &amp; Hoa hồng Net</span> →</a>
       </div>
     </div>
   </div>
 
   <div class="block">
-    <div class="intro"><h3 data-en="How your salary is calculated">Lương được tính như thế nào</h3><p class="muted" data-en="Salary is calculated <b>in sequence</b>: the Marketing KPI is applied first, then actual working days, and the Net KPI withholding last.">Lương được tính <b>lần lượt theo thứ tự</b>: áp dụng KPI Marketing trước, sau đó đến ngày công thực tế, và cuối cùng là phần giữ lương theo KPI Net.</p></div>
+    <div class="intro"><h3 data-en="How your salary is calculated">Lương được tính như thế nào</h3><p class="muted" data-en="Salary is calculated <b>in sequence</b>: the Sales-Driven Marketing KPI is applied first, then actual working days, and the Net KPI withholding last.">Lương được tính <b>lần lượt theo thứ tự</b>: áp dụng KPI Marketing định hướng bán hàng trước, sau đó đến ngày công thực tế, và cuối cùng là phần giữ lương theo KPI Net.</p></div>
     <div class="steps4">
-      <div class="step s1"><div class="no">1</div><h4 data-en="Marketing KPI">KPI Marketing</h4><div class="fx" data-en="Base salary × Marketing salary rate = <b>Adjusted base salary</b>">Lương cơ bản × Tỷ lệ lương Marketing = <b>Lương cơ bản điều chỉnh</b></div><p class="nt" data-en="Rate from the fixed tiers: 0%, 25%, 50%, 75%, 100%.">Tỷ lệ theo bậc cố định: 0%, 25%, 50%, 75%, 100%.</p></div>
+      <div class="step s1"><div class="no">1</div><h4 data-en="Sales-Driven Marketing KPI">KPI Marketing định hướng bán hàng</h4><div class="fx" data-en="Base salary × Marketing salary rate = <b>Adjusted base salary</b>">Lương cơ bản × Tỷ lệ lương Marketing = <b>Lương cơ bản điều chỉnh</b></div><p class="nt" data-en="Rate from the fixed tiers: 0%, 25%, 50%, 75%, 100%.">Tỷ lệ theo bậc cố định: 0%, 25%, 50%, 75%, 100%.</p></div>
       <div class="step"><div class="no">2</div><h4 data-en="Actual working days">Ngày công thực tế</h4><div class="fx" data-en="Adjusted base × (Paid working days ÷ Standard working days) = <b>Actual earned salary</b>">Lương điều chỉnh × (Ngày công được trả ÷ Ngày công chuẩn) = <b>Lương thực tế</b></div><p class="nt" data-en="Based on approved attendance.">Theo chấm công đã được duyệt.</p></div>
       <div class="step s3"><div class="no">3</div><h4 data-en="Net KPI withholding">Giữ lương theo KPI Net</h4><div class="fx" data-en="Actual earned salary × Net withholding rate = <b>Net hold amount</b>">Lương thực tế × Tỷ lệ giữ lương Net = <b>Khoản giữ lại</b></div><p class="nt" data-en="Recorded by HR; may be recovered later.">HR ghi nhận, có thể được hoàn lại sau.</p></div>
       <div class="step s4"><div class="no">4</div><h4 data-en="Final monthly salary">Lương tháng</h4><div class="fx" data-en="Actual earned salary − Net hold amount = <b>Final salary</b>">Lương thực tế − Khoản giữ lại = <b>Lương thực nhận</b></div><p class="nt" data-en="Before any other payroll adjustments.">Trước các điều chỉnh payroll khác.</p></div>
@@ -590,22 +607,23 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
   <div class="block">
     <div class="intro"><h3 data-en="Where to go next">Đọc tiếp ở đâu</h3></div>
     <div class="ov-nav">
-      <a href="#marketing"><div><b data-en="2 · Marketing KPIs">2 · KPI Marketing</b><span data-en="KPIs for your role, points calculator, salary tiers">KPI theo vai trò, máy tính điểm, bậc lương</span></div><span class="arr" aria-hidden="true">→</span></a>
-      <a href="#luong-net"><div><b data-en="3 · Sales, Net &amp; Salary KPIs">3 · KPI Sales, Net &amp; Lương</b><span data-en="Core KPIs, withholding, recovery, 12-month simulation">KPI cốt lõi, giữ lương, phục hồi, mô phỏng 12 tháng</span></div><span class="arr" aria-hidden="true">→</span></a>
+      <a href="#marketing"><div><b data-en="2 · Sales-Driven Marketing KPIs">2 · KPI Marketing định hướng bán hàng</b><span data-en="KPIs for your role, points calculator, salary tiers">KPI theo vai trò, máy tính điểm, bậc lương</span></div><span class="arr" aria-hidden="true">→</span></a>
+      <a href="#luong-net"><div><b data-en="3 · Salary &amp; Net Commission KPIs">3 · KPI Lương &amp; Hoa hồng Net</b><span data-en="Core KPIs, withholding, recovery, 12-month simulation">KPI cốt lõi, giữ lương, phục hồi, mô phỏng 12 tháng</span></div><span class="arr" aria-hidden="true">→</span></a>
     </div>
-    <p class="small muted" style="margin-top:14px" data-en="Also in this handbook: <a href=&quot;#chuong-trinh&quot;>BD &amp; Sales Special Programs</a> · <a href=&quot;#to-chuc&quot;>Organization &amp; Team Operations</a> · <a href=&quot;#kiem-tra&quot;>KPI Test &amp; Certification</a>">Trong cẩm nang còn có: <a href="#chuong-trinh">Chương trình đặc biệt BD &amp; Sales</a> · <a href="#to-chuc">Tổ chức &amp; vận hành team</a> · <a href="#kiem-tra">Kiểm tra &amp; chứng nhận KPI</a></p>
+    <p class="small muted" style="margin-top:14px" data-en="Also in this handbook: <a href=&quot;#chuong-trinh&quot;>Sales Special Programs</a> · <a href=&quot;#to-chuc&quot;>Organization &amp; Team Operations</a> · <a href=&quot;#kiem-tra&quot;>KPI Test &amp; Certification</a>">Trong cẩm nang còn có: <a href="#chuong-trinh">Chương trình đặc biệt cho Sales</a> · <a href="#to-chuc">Tổ chức &amp; vận hành team</a> · <a href="#kiem-tra">Kiểm tra &amp; chứng nhận KPI</a></p>
   </div>
 </section>
 
 <!-- ================= 2. MARKETING ================= -->
 <section class="view" id="v-marketing">
-  <div class="rolebar"><div><b data-en="Who are you?">Bạn là ai?</b><span class="sub" data-en="Pick your role first. This tab only shows the KPIs for that role.">Chọn vai trò trước. Tab này chỉ hiển thị KPI đúng với vai trò của bạn.</span></div><div class="seg role-seg" role="group"><button type="button" data-role="leader">Leader</button><button type="button" data-role="staff" data-en="Staff">Nhân viên</button></div></div>
-  <h2 data-en="Marketing KPIs: earn enough points, get your full salary">KPI Marketing: chơi đủ điểm, nhận đủ lương</h2>
-  <p class="lead only-staff" data-en="You are viewing the Marketing KPIs for <b>Staff</b> (Off Trade is for Leaders only). First read what each KPI requires and how it is scored, then use the calculator at the bottom to estimate this month’s points and salary rate.">Bạn đang xem KPI Marketing dành cho <b>Nhân viên</b> (KPI Off Trade chỉ dành cho Leader). Hãy đọc kỹ yêu cầu và cách chấm điểm của từng KPI trước, sau đó dùng máy tính ở cuối trang để ước tính điểm và tỷ lệ lương tháng này.</p>
-  <p class="lead only-leader" data-en="You are viewing the Marketing KPIs for <b>Leaders</b> (Telegram is for Staff only). First read what each KPI requires and how it is scored, then use the calculator at the bottom to estimate this month’s points and salary rate.">Bạn đang xem KPI Marketing dành cho <b>Leader</b> (KPI Telegram chỉ dành cho nhân viên). Hãy đọc kỹ yêu cầu và cách chấm điểm của từng KPI trước, sau đó dùng máy tính ở cuối trang để ước tính điểm và tỷ lệ lương tháng này.</p>
+  <div class="rolebar"><div><b data-en="Who are you?">Bạn là ai?</b><span class="sub" data-en="Pick your role first. This tab only shows the KPIs for that role.">Chọn vai trò trước. Tab này chỉ hiển thị KPI đúng với vai trò của bạn.</span></div><div class="seg role-seg" role="group"><button type="button" data-role="leader">Sales Leader</button><button type="button" data-role="staff" data-en="Sales Staff">Nhân viên Sales</button></div></div>
+  <h2 data-en="Sales-Driven Marketing KPIs">KPI Marketing định hướng bán hàng</h2>
+  <p class="purpose" style="max-width:72ch" data-en="Leverage marketing activities to build credibility, strengthen your personal brand, and naturally attract potential clients to support long-term sales growth.">Tận dụng các hoạt động marketing để xây dựng uy tín, phát triển thương hiệu cá nhân và thu hút khách hàng tiềm năng một cách tự nhiên, từ đó hỗ trợ tăng trưởng doanh số bền vững.</p>
+  <p class="lead only-staff" data-en="You are viewing the Sales-Driven Marketing KPIs for <b>Sales Staff</b> (Off Trade is for Sales Leaders only). First read what each KPI requires and how it is scored, then use the calculator at the bottom to estimate this month’s points and salary rate.">Bạn đang xem KPI Marketing định hướng bán hàng dành cho <b>Nhân viên Sales</b> (KPI Off Trade chỉ dành cho Sales Leader). Hãy đọc kỹ yêu cầu và cách chấm điểm của từng KPI trước, sau đó dùng máy tính ở cuối trang để ước tính điểm và tỷ lệ lương tháng này.</p>
+  <p class="lead only-leader" data-en="You are viewing the Sales-Driven Marketing KPIs for <b>Sales Leaders</b> (Telegram is for Sales Staff only). First read what each KPI requires and how it is scored, then use the calculator at the bottom to estimate this month’s points and salary rate.">Bạn đang xem KPI Marketing định hướng bán hàng dành cho <b>Sales Leader</b> (KPI Telegram chỉ dành cho Nhân viên Sales). Hãy đọc kỹ yêu cầu và cách chấm điểm của từng KPI trước, sau đó dùng máy tính ở cuối trang để ước tính điểm và tỷ lệ lương tháng này.</p>
 
   <div class="block" style="margin-top:28px">
-    <div class="intro"><h3 id="kpiListTitle"></h3><p class="purpose" data-en="<b>Overall purpose of Marketing KPIs:</b> attract the market, raise brand awareness and build a foundation for Sales. Sales build a personal brand, gain credibility and more chances to close. The company gains brand coverage and new clients."><b>Mục đích chung của nhóm KPI Marketing:</b> thu hút thị trường, tăng nhận diện thương hiệu và tạo nền tảng cho Sale khai thác. Sale xây thương hiệu cá nhân, tăng uy tín và cơ hội chốt khách. Công ty tăng độ phủ thương hiệu và thu hút khách mới.</p><p class="muted small" data-en="The line under each KPI’s name is that KPI’s specific purpose. The file only states an overall purpose for the group, so each KPI’s purpose is interpreted from its requirements. Click to see details.">Dòng mô tả dưới tên mỗi KPI là tác dụng riêng của KPI đó. File chỉ nêu mục đích chung cho cả nhóm, nên tác dụng riêng được diễn giải từ yêu cầu của từng KPI. Bấm vào để xem chi tiết.</p></div>
+    <div class="intro"><h3 id="kpiListTitle"></h3><p class="purpose" data-en="<b>Overall purpose of Sales-Driven Marketing KPIs:</b> attract the market, raise brand awareness and build a foundation for Sales. Sales build a personal brand, gain credibility and more chances to close. The company gains brand coverage and new clients."><b>Mục đích chung của KPI Marketing định hướng bán hàng:</b> thu hút thị trường, tăng nhận diện thương hiệu và tạo nền tảng cho Sale khai thác. Sale xây thương hiệu cá nhân, tăng uy tín và cơ hội chốt khách. Công ty tăng độ phủ thương hiệu và thu hút khách mới.</p><p class="muted small" data-en="The line under each KPI’s name is that KPI’s specific purpose. The file only states an overall purpose for the group, so each KPI’s purpose is interpreted from its requirements. Click to see details.">Dòng mô tả dưới tên mỗi KPI là tác dụng riêng của KPI đó. File chỉ nêu mục đích chung cho cả nhóm, nên tác dụng riêng được diễn giải từ yêu cầu của từng KPI. Bấm vào để xem chi tiết.</p></div>
     <div class="kpi-list" id="kpiList"></div>
   </div>
   <div class="block">
@@ -639,9 +657,9 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
 
 <!-- ================= 3. SALES, NET & LƯƠNG ================= -->
 <section class="view" id="v-luong-net">
-  <div class="rolebar"><div><b data-en="Who are you?">Bạn là ai?</b><span class="sub" data-en="Pick your role first. This tab only shows the KPIs for that role.">Chọn vai trò trước. Tab này chỉ hiển thị KPI đúng với vai trò của bạn.</span></div><div class="seg role-seg" role="group"><button type="button" data-role="leader">Leader</button><button type="button" data-role="staff" data-en="Staff">Nhân viên</button></div></div>
-  <h2 class="only-staff" data-en="Sales, Net &amp; Salary KPIs: hit either one and keep your salary">KPI Sales, Net &amp; Lương: đạt một trong hai là giữ được lương</h2>
-  <h2 class="only-leader" data-en="Sales, Net &amp; Salary KPIs for Leaders">KPI Sales, Net &amp; Lương dành cho Leader</h2>
+  <div class="rolebar"><div><b data-en="Who are you?">Bạn là ai?</b><span class="sub" data-en="Pick your role first. This tab only shows the KPIs for that role.">Chọn vai trò trước. Tab này chỉ hiển thị KPI đúng với vai trò của bạn.</span></div><div class="seg role-seg" role="group"><button type="button" data-role="leader">Sales Leader</button><button type="button" data-role="staff" data-en="Sales Staff">Nhân viên Sales</button></div></div>
+  <h2 class="only-staff" data-en="Salary &amp; Net Commission KPIs: hit either core KPI and keep your salary">KPI Lương &amp; Hoa hồng Net: đạt một trong hai KPI cốt lõi là giữ được lương</h2>
+  <h2 class="only-leader" data-en="Salary &amp; Net Commission KPIs for Sales Leaders">KPI Lương &amp; Hoa hồng Net dành cho Sales Leader</h2>
   <p class="lead only-staff" data-en="Each month, staff need to hit the <b>Standard IB KPI</b> or the <b>Retail Client KPI</b>. Miss both and part of your salary is withheld, in increasing steps. Withheld salary is not lost: there are several ways to get it back.">Mỗi tháng, nhân viên cần đạt <b>KPI IB chuẩn</b> hoặc <b>KPI khách lẻ</b>. Trượt thì lương bị giữ lại theo bậc tăng dần. Phần bị giữ không mất hẳn: có nhiều cách để được hoàn lại.</p>
   <p class="lead only-leader" data-en="Each month, Leaders need to hit the <b>Standard IB KPI</b>. The <b>7th Team Member KPI</b> can also count as hitting the IB KPI. Miss it and part of your salary is withheld, in increasing steps. Withheld salary is not lost: there are several ways to get it back.">Mỗi tháng, Leader cần đạt <b>KPI IB chuẩn</b>. <b>KPI thành viên thứ 7</b> cũng có thể được tính là đạt KPI IB. Trượt thì lương bị giữ lại theo bậc tăng dần. Phần bị giữ không mất hẳn: có nhiều cách để được hoàn lại.</p>
 
@@ -745,7 +763,7 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
     <div class="calc">
       <div class="panel">
         <div class="field"><label for="scBase" data-en="Original base salary (VND)">Lương cơ bản gốc (VND)</label><input id="scBase" type="number" min="0" step="100000" value="10000000" inputmode="numeric"></div>
-        <div class="field"><label for="scMk" data-en="Marketing KPI salary rate (tab 2)">Tỷ lệ lương KPI Marketing (tab 2)</label>
+        <div class="field"><label for="scMk" data-en="Sales-Driven Marketing KPI salary rate (tab 2)">Tỷ lệ lương KPI Marketing định hướng bán hàng (tab 2)</label>
           <select id="scMk" style="border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--surface)"><option value="0">0%</option><option value="25">25%</option><option value="50">50%</option><option value="75" selected>75%</option><option value="100">100%</option></select>
           <button type="button" class="theme-btn" id="scFromMk" style="align-self:flex-start;margin-top:4px"></button></div>
         <div class="grid2" style="gap:10px">
@@ -770,7 +788,7 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
         <ol class="sc-steps" id="scSteps"></ol>
       </div>
     </div>
-    <div class="callout" style="margin-top:16px"><b data-en="Calculation rules">Quy tắc tính</b><ul class="clean small" style="margin-top:6px" data-en="<li>Never calculate the Net hold directly from the original base salary.</li><li>Apply the Marketing KPI first, then actual working days, then the Net withholding.</li><li>The Marketing salary reduction is permanently unearned under this KPI mechanism.</li><li>Only the Net hold amount is recorded for potential future recovery.</li><li>Results are before other payroll adjustments; the approved attendance and payroll rounding rules apply when available.</li>"><li>Không bao giờ tính khoản giữ Net trực tiếp trên lương cơ bản gốc.</li><li>Áp dụng KPI Marketing trước, rồi đến ngày công thực tế, cuối cùng mới đến giữ lương Net.</li><li>Phần lương giảm do KPI Marketing là không được nhận vĩnh viễn theo cơ chế này.</li><li>Chỉ khoản giữ Net được ghi nhận để có thể hoàn lại sau này.</li><li>Kết quả là trước các điều chỉnh payroll khác; khi có quy tắc chấm công và làm tròn chính thức của payroll thì áp dụng theo đó.</li></ul></div>
+    <div class="callout" style="margin-top:16px"><b data-en="Calculation rules">Quy tắc tính</b><ul class="clean small" style="margin-top:6px" data-en="<li>Never calculate the Net hold directly from the original base salary.</li><li>Apply the Sales-Driven Marketing KPI first, then actual working days, then the Net withholding.</li><li>The Marketing salary reduction is permanently unearned under this KPI mechanism.</li><li>Only the Net hold amount is recorded for potential future recovery.</li><li>Results are before other payroll adjustments; the approved attendance and payroll rounding rules apply when available.</li>"><li>Không bao giờ tính khoản giữ Net trực tiếp trên lương cơ bản gốc.</li><li>Áp dụng KPI Marketing định hướng bán hàng trước, rồi đến ngày công thực tế, cuối cùng mới đến giữ lương Net.</li><li>Phần lương giảm do KPI Marketing định hướng bán hàng là không được nhận vĩnh viễn theo cơ chế này.</li><li>Chỉ khoản giữ Net được ghi nhận để có thể hoàn lại sau này.</li><li>Kết quả là trước các điều chỉnh payroll khác; khi có quy tắc chấm công và làm tròn chính thức của payroll thì áp dụng theo đó.</li></ul></div>
   </div>
 
   <div class="block">
@@ -843,7 +861,7 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
 
 <!-- ================= 4. CHƯƠNG TRÌNH ĐẶC BIỆT ================= -->
 <section class="view" id="v-chuong-trinh">
-  <h2 data-en="BD &amp; Sales Special Programs">Chương trình đặc biệt BD &amp; Sales</h2>
+  <h2 data-en="Sales Special Programs">Chương trình đặc biệt cho Sales</h2>
   <p class="lead" data-en="Beyond KPIs, there are two monthly programs. The knowledge quiz is mandatory: a refresher with big prizes. The lucky draw is a pure bonus, with a 50 million VND pool every month.">Ngoài KPI, mỗi tháng có hai chương trình. Quiz kiến thức là bắt buộc, vừa ôn kiến thức vừa có thưởng lớn. Quay số may mắn là phần thưởng thêm hoàn toàn, quỹ 50 triệu mỗi tháng.</p>
   <div class="grid2" style="margin-top:24px">
     <div class="panel">
@@ -897,8 +915,9 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
 <!-- ================= 5. TỔ CHỨC & VẬN HÀNH ================= -->
 <section class="view" id="v-to-chuc">
   <h2 data-en="Organization &amp; Team Operations">Tổ chức &amp; vận hành team</h2>
-  <p class="lead" data-en="How Wegolden is organized, what each department is responsible for, and how teams work together every day through Telegram groups.">Wegolden được tổ chức thế nào, mỗi bộ phận chịu trách nhiệm gì, và các team phối hợp hằng ngày ra sao qua các nhóm Telegram.</p>
-
+  <p class="lead" data-en="Two parts: the <b>Organization Chart</b> shows how WeGolden is structured and who reports to whom; <b>Team Operations</b> explains how teams coordinate every day through Telegram groups.">Gồm hai phần: <b>Sơ đồ tổ chức</b> cho biết WeGolden được tổ chức thế nào và ai báo cáo cho ai; <b>Vận hành team</b> giải thích các team phối hợp hằng ngày qua các nhóm Telegram.</p>
+  <div class="subtabs" role="tablist" aria-label="Organization &amp; Team Operations"><button type="button" role="tab" data-pane="org" aria-selected="true"><span data-en="Organization Chart">Sơ đồ tổ chức</span></button><button type="button" role="tab" data-pane="ops" aria-selected="false"><span data-en="Team Operations">Vận hành team</span></button></div>
+  <div class="subpane on" data-pane="org">
   <div class="block" style="margin-top:28px">
     <div class="intro"><h3 data-en="WG (We Golden) organizational chart">Sơ đồ tổ chức WG (We Golden)</h3><p class="muted" data-en="Built directly from the <b>WG active</b> sheet of the staff master list, following the sheet’s structure: Head Office (BOD and departments) and Local Market (BD, CM and teams by country). Click a person to see their role and reporting line.">Tạo trực tiếp từ sheet <b>WG active</b> trong file nhân sự, theo đúng cấu trúc của bảng: Head Office (BOD và các phòng ban) và Local Market (BD, CM và team theo từng quốc gia). Bấm vào một người để xem vai trò và tuyến báo cáo.</p></div>
     <div class="panel">
@@ -921,23 +940,8 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
   </div>
   <div class="modal-bg" id="ocModal" role="dialog" aria-modal="true" aria-labelledby="ocmTitle"><div class="modal" id="ocmBody"></div></div>
 
-  <div class="block">
-    <div class="intro"><h3 data-en="Who does what">Ai làm gì</h3></div>
-    <div class="scroll">
-      <table class="cmp">
-        <thead><tr><th data-en="Level">Cấp</th><th data-en="Unit">Bộ phận</th><th data-en="Responsibility">Trách nhiệm</th><th data-en="Reports to / works with">Báo cáo / phối hợp với</th></tr></thead>
-        <tbody>
-          <tr><th>1</th><td><b>BOD</b></td><td data-en="Overall direction and decision making">Định hướng tổng thể và ra quyết định</td><td>—</td></tr>
-          <tr><th>2</th><td><b>Audit / Assistance · SP Global · Marketing, IT · <span data-en="Others">Khác</span></b></td><td data-en="Provide global support and management: audit and compliance, global customer support, marketing and IT">Hỗ trợ và quản lý toàn cầu: kiểm toán và tuân thủ, hỗ trợ khách hàng toàn cầu, marketing và IT</td><td data-en="BOD; support local markets">BOD; hỗ trợ các thị trường local</td></tr>
-          <tr><th>3</th><td><b>BD</b></td><td data-en="Oversee and manage local markets">Giám sát và quản lý các thị trường local</td><td data-en="Reports to BOD; coordinates with CMs">Báo cáo BOD; phối hợp với CM</td></tr>
-          <tr><th>4</th><td><b>CM</b></td><td data-en="Manage sales and support in each local market; apply KPIs flexibly per market with an approved plan">Quản lý sales và support tại từng thị trường; áp dụng KPI linh hoạt theo thị trường khi có kế hoạch được duyệt</td><td data-en="Reports to BD">Báo cáo BD</td></tr>
-          <tr><th>5</th><td><b>Sale</b></td><td data-en="Directly handle sales with IBs, partners and clients">Trực tiếp bán hàng với IB, đối tác, khách hàng</td><td data-en="Reports to CM; works with Local Support via Telegram groups">Báo cáo CM; làm việc với Support local qua nhóm Telegram</td></tr>
-          <tr><th>5</th><td><b>Support</b></td><td data-en="Handle customer inquiries in the local language; manage the Telegram groups">Xử lý yêu cầu của khách bằng ngôn ngữ địa phương; quản trị các nhóm Telegram</td><td data-en="Reports to CM; escalates tasks to SP Global">Báo cáo CM; chuyển task lên SP Global</td></tr>
-        </tbody>
-      </table>
-    </div>
   </div>
-
+  <div class="subpane" data-pane="ops">
   <div class="block">
     <div class="intro">
       <h3 data-en="How teams work together: the Telegram group system">Các team phối hợp thế nào: hệ thống nhóm Telegram</h3>
@@ -976,6 +980,7 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
       <div class="panel"><h4 data-en="Security">Bảo mật</h4><ul class="clean small" data-en="<li>Support holds full admin control</li><li>Sales may not join groups outside their scope</li><li>Staff who leave, or IBs who move to another system, are removed immediately</li>"><li>Support nắm toàn quyền quản trị</li><li>Sale không được vào nhóm ngoài phạm vi quản lý</li><li>Kick ngay nhân sự nghỉ việc hoặc IB chuyển hệ thống</li></ul></div>
     </div>
   </div>
+  </div>
 </section>
 
 <!-- ================= 6. KIỂM TRA & CHỨNG NHẬN ================= -->
@@ -1006,7 +1011,7 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
   <div id="certWrap"></div>
 </section>
 </main>
-<footer class="contact"><div class="contact-box"><p data-en="If BD needs further training on KPIs, please contact the <b>Audit team</b>:">Nếu BD cần được đào tạo thêm về KPI, vui lòng liên hệ <b>Audit team</b>:</p><div class="contact-list"><a href="mailto:minhyun.hoang@wegolden.com"><b>Minhyun - Minh Hoang</b><span>minhyun.hoang@wegolden.com</span></a><a href="mailto:arthur.pham@wegolden.com"><b>Arthur Pham</b><span>arthur.pham@wegolden.com</span></a><a href="mailto:tommy@wegolden.com"><b>Tommy Lung</b><span>tommy@wegolden.com</span></a><a href="mailto:ngoc.hanna@wegolden.com"><b>Hanna - Yen Ngoc</b><span>ngoc.hanna@wegolden.com</span></a><a href="mailto:emma.le@wegolden.com"><b>Emma - Le Co</b><span>emma.le@wegolden.com</span></a></div></div></footer>
+<footer class="contact"><div class="contact-box"><p data-en="If you need further training on KPIs, please contact the <b>Audit team</b>:">Nếu bạn cần được đào tạo thêm về KPI, vui lòng liên hệ <b>Audit team</b>:</p><div class="contact-list"><a href="mailto:minhyun.hoang@wegolden.com"><b>Minhyun - Minh Hoang</b><span>minhyun.hoang@wegolden.com</span></a><a href="mailto:arthur.pham@wegolden.com"><b>Arthur Pham</b><span>arthur.pham@wegolden.com</span></a><a href="mailto:tommy@wegolden.com"><b>Tommy Lung</b><span>tommy@wegolden.com</span></a><a href="mailto:ngoc.hanna@wegolden.com"><b>Hanna - Yen Ngoc</b><span>ngoc.hanna@wegolden.com</span></a><a href="mailto:emma.le@wegolden.com"><b>Emma - Le Co</b><span>emma.le@wegolden.com</span></a></div></div></footer>
 
 <script>
 (function(){
@@ -1033,17 +1038,28 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
     views.forEach(x=>document.getElementById('v-'+x).classList.toggle('on',x===v));
     document.querySelectorAll('nav.tabs a').forEach(a=>{if(a.dataset.v===v)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
     window.scrollTo(0,0);
+    centerTab();
   }
+  const navEl=document.querySelector('nav.tabs');
+  function navArrows(){const l=navEl.scrollLeft>2,r=navEl.scrollLeft+navEl.clientWidth<navEl.scrollWidth-2;document.querySelector('.tabs-arr.l').classList.toggle('on',l);document.querySelector('.tabs-arr.r').classList.toggle('on',r);}
+  function centerTab(){const a=navEl.querySelector('a[aria-current="page"]');if(a&&navEl.scrollWidth>navEl.clientWidth){navEl.scrollLeft=a.offsetLeft-(navEl.clientWidth-a.offsetWidth)/2;}navArrows();}
+  navEl.addEventListener('scroll',navArrows,{passive:true});addEventListener('resize',centerTab);
+  document.querySelector('.tabs-arr.l').addEventListener('click',()=>navEl.scrollBy({left:-200}));
+  document.querySelector('.tabs-arr.r').addEventListener('click',()=>navEl.scrollBy({left:200}));
+  document.querySelectorAll('.subtabs button').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('.subtabs button').forEach(x=>x.setAttribute('aria-selected',x===b?'true':'false'));
+    document.querySelectorAll('.subpane').forEach(p=>p.classList.toggle('on',p.dataset.pane===b.dataset.pane));
+  }));
   addEventListener('hashchange',show);show();
 
   /* Marketing KPI data (who: leader | staff | all) */
   const KPIS=[
     {id:'offtrade',who:'leader',full:250,bonus:50,mod:'Audit',
      vi:{name:'KPI Off Trade',purpose:'Leader xuất hiện như chuyên gia: video phân tích tin tức, kỹ thuật, lộ mặt để tạo sự thân thiện và niềm tin với người xem.',platform:'TikTok + Facebook',freq:'5 video/tuần · tối đa 2 video/ngày',
-       req:['Video 1 phút – 1 phút 30 (dài hơn cũng được)','Nội dung: phân tích tin tức, phân tích kỹ thuật, nhận định tài chính','Bắt buộc lộ mặt, kể cả livestream','Logo LiteFinance suốt video + outro Lite','Hashtag #LiteFinance #LiteFinanceVN','Không chứa logo/giao diện Facebook, Instagram, YouTube'],
+       req:['Video 1 phút – 1 phút 30 (dài hơn cũng được)','Nội dung: phân tích tin tức, phân tích kỹ thuật, nhận định tài chính','Bắt buộc lộ mặt, kể cả livestream','Logo LiteFinance suốt video + outro WeGolden','Hashtag #LiteFinance #LiteFinanceVN','Không chứa logo/giao diện Facebook, Instagram, YouTube'],
        score:['5 bài/tuần: 50 điểm','25 bài/tháng: 250 + 50 điểm thưởng','Tuần không đăng: 0 điểm','4 tuần liên tiếp không đăng: −200']},
      en:{name:'Off Trade KPI',purpose:'Leaders appear as experts: news and technical analysis videos, face on camera to build friendliness and trust with viewers.',platform:'TikTok + Facebook',freq:'5 videos/week · max 2 videos/day',
-       req:['Videos of 1 – 1.5 minutes (longer is fine)','Content: news analysis, technical analysis, financial views','Face on camera is mandatory, including livestreams','LiteFinance logo throughout + Lite outro','Hashtags #LiteFinance #LiteFinanceVN','No Facebook, Instagram or YouTube logos/interface'],
+       req:['Videos of 1 – 1.5 minutes (longer is fine)','Content: news analysis, technical analysis, financial views','Face on camera is mandatory, including livestreams','LiteFinance logo throughout + WeGolden outro','Hashtags #LiteFinance #LiteFinanceVN','No Facebook, Instagram or YouTube logos/interface'],
        score:['5 posts/week: 50 points','25 posts/month: 250 + 50 bonus points','Week with no posts: 0 points','4 consecutive weeks with no posts: −200']}},
     {id:'telegram',who:'staff',full:200,bonus:0,mod:'Audit',team:true,
      vi:{name:'KPI Telegram',purpose:'Giữ các nhóm Telegram luôn sôi động bằng tương tác thật, đều đặn mỗi ngày.',platform:'Telegram',freq:'25 tin nhắn hợp lệ/ngày · Thứ 2 – Thứ 6',
@@ -1055,25 +1071,25 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
        req:['<b>A valid message must meet ALL conditions:</b> text only, 3–15 sentences, no repeated content','<b>Anti-fraud:</b> no duplicate messages. Identical messages, or ones changed by only a few characters or words, are classified as fraud and subject to severe disciplinary action','Messages must not be excessively short or long','<b>No images</b>, including text captions attached to images'],
        score:['Whole team meets it 4 weeks in a row: +200 for the team','Whole team misses it 4 weeks in a row: −200 for the team']}},
     {id:'slogan',who:'all',full:200,bonus:50,mod:'Audit',
-     vi:{name:'KPI Slogan',purpose:'Thấm văn hóa và tinh thần Lite qua khẩu hiệu, tạo kỷ luật đều đặn mỗi tuần.',platform:'Telegram (app)',freq:'Thứ 2 và Thứ 4, trước 12:00',
-       req:['Quay video đọc khẩu hiệu Lite, gửi lên ứng dụng','Hô rõ ngày/tháng/năm trong video','Áp dụng cho SC và toàn bộ CTV'],
+     vi:{name:'KPI Slogan',purpose:'Thấm văn hóa và tinh thần WeGolden qua khẩu hiệu, tạo kỷ luật đều đặn mỗi tuần.',platform:'Telegram (app)',freq:'Thứ 2 và Thứ 4, trước 12:00',
+       req:['Quay video đọc khẩu hiệu WeGolden, gửi lên ứng dụng','Hô rõ ngày/tháng/năm trong video','Áp dụng cho SC và toàn bộ CTV'],
        score:['2 bài/tuần: 50 điểm','8 bài/tháng: 200 + 50 điểm thưởng','4 tuần liên tiếp không đăng: −200']},
-     en:{name:'Slogan KPI',purpose:'Instill Lite’s culture and spirit through the slogan, building weekly discipline.',platform:'Telegram (app)',freq:'Monday and Wednesday, before 12:00',
-       req:['Record a video reciting the Lite slogan and upload it to the app','State the date clearly in the video','Applies to SCs and all collaborators'],
+     en:{name:'Slogan KPI',purpose:'Instill WeGolden’s culture and spirit through the slogan, building weekly discipline.',platform:'Telegram (app)',freq:'Monday and Wednesday, before 12:00',
+       req:['Record a video reciting the WeGolden slogan and upload it to the app','State the date clearly in the video','Applies to SCs and all collaborators'],
        score:['2 posts/week: 50 points','8 posts/month: 200 + 50 bonus points','4 consecutive weeks with no posts: −200']}},
     {id:'tbcompany',who:'all',full:200,bonus:50,mod:'Audit + HR',
      vi:{name:'KPI Teambuilding (công ty tổ chức)',purpose:'Lan tỏa hình ảnh một đội ngũ gắn kết, chuyên nghiệp ra mạng xã hội.',platform:'Zalo + Facebook',freq:'1 bài/tuần',
-       req:['Đăng nội dung họp nhóm + ảnh liên quan Lite','Đủ mặt thành viên (trừ khi trợ lý & HR duyệt ngoại lệ)','Đính kèm hóa đơn và ảnh buổi họp','Lộ mặt, mặc đồng phục (hiện có thể thay bằng logo Lite)','Hashtag #LiteFinance #TeamBuilding + banner Lite'],
+       req:['Đăng nội dung họp nhóm + ảnh liên quan WeGolden','Đủ mặt thành viên (trừ khi trợ lý & HR duyệt ngoại lệ)','Đính kèm hóa đơn và ảnh buổi họp','Lộ mặt, mặc đồng phục (hiện có thể thay bằng logo WeGolden)','Hashtag #LiteFinance #TeamBuilding + banner WeGolden'],
        score:['Mỗi bài: 50 điểm','4 bài/tháng: 200 + 50 điểm thưởng','4 tuần liên tiếp không đăng: −200']},
      en:{name:'Teambuilding KPI (company-organized)',purpose:'Show a cohesive, professional team on social media.',platform:'Zalo + Facebook',freq:'1 post/week',
-       req:['Post about the team meeting + Lite-related photos','All members present (unless the assistant & HR approve an exception)','Attach the receipt and meeting photos','Faces visible, uniforms worn (a Lite logo may currently substitute)','Hashtags #LiteFinance #TeamBuilding + Lite banner'],
+       req:['Post about the team meeting + WeGolden-related photos','All members present (unless the assistant & HR approve an exception)','Attach the receipt and meeting photos','Faces visible, uniforms worn (a WeGolden logo may currently substitute)','Hashtags #LiteFinance #TeamBuilding + WeGolden banner'],
        score:['Each post: 50 points','4 posts/month: 200 + 50 bonus points','4 consecutive weeks with no posts: −200']}},
     {id:'tbleader',who:'all',full:0,bonus:50,mod:'HR',adhoc:true,
      vi:{name:'KPI Teambuilding (Leader tổ chức)',purpose:'Khuyến khích Leader chủ động gắn kết team, chi phí lấy từ quỹ thưởng KPI văn phòng.',platform:'Zalo',freq:'Khi có phát sinh',
-       req:['Đăng nội dung tham gia teambuilding do SC tổ chức','Đính kèm hóa đơn và ảnh, lộ mặt, đồng phục/logo Lite','Hashtag #LiteFinance #TeamBuilding + banner Lite','Chi từ quỹ thưởng KPI văn phòng'],
+       req:['Đăng nội dung tham gia teambuilding do SC tổ chức','Đính kèm hóa đơn và ảnh, lộ mặt, đồng phục/logo WeGolden','Hashtag #LiteFinance #TeamBuilding + banner WeGolden','Chi từ quỹ thưởng KPI văn phòng'],
        score:['Mỗi bài phát sinh: +50 điểm']},
      en:{name:'Teambuilding KPI (Leader-organized)',purpose:'Encourage Leaders to bond their teams proactively, funded by the office KPI bonus pool.',platform:'Zalo',freq:'As it happens',
-       req:['Post about joining a teambuilding organized by the SC','Attach receipt and photos, faces visible, uniform/Lite logo','Hashtags #LiteFinance #TeamBuilding + Lite banner','Funded by the office KPI bonus pool'],
+       req:['Post about joining a teambuilding organized by the SC','Attach receipt and photos, faces visible, uniform/WeGolden logo','Hashtags #LiteFinance #TeamBuilding + WeGolden banner','Funded by the office KPI bonus pool'],
        score:['Each extra post: +50 points']}},
     {id:'airdrop',who:'all',full:200,bonus:50,mod:'HR',
      vi:{name:'KPI Airdrop',purpose:'Tăng lượt xem và độ phủ cho các buổi livestream bằng cách chia sẻ đúng ngày diễn ra.',platform:'Zalo + Facebook',freq:'1 livestream/tuần · Thứ 2 – Thứ 6',
@@ -1083,18 +1099,18 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
        req:['Share 1 livestream post per week','Share on the livestream day itself, not on other days'],
        score:['Each post: 50 points','4 posts/month: 200 + 50 bonus points','4 consecutive weeks with no posts: −200']}},
     {id:'cultural',who:'all',full:200,bonus:50,mod:'HR',
-     vi:{name:'KPI Cultural',purpose:'Lan tỏa nội dung chính thức về Lite qua mạng lưới bạn bè cá nhân của Sale.',platform:'Zalo + Facebook',freq:'1 bài/tuần · chốt 16:00 Thứ 2',
-       req:['Đăng 1 bài “3 sao” từ nhóm Trung Thành với LiteFinance','Nội dung và link phải khớp, có #LiteFinance + logo','Facebook ≥ 1.000 bạn bè hoặc người theo dõi, bài để Công khai','Dùng Zalo chăm sóc khách; kết bạn Zalo HR','KPI Văn hóa cơ bản: đăng nội dung, ảnh cá nhân về Lite (cả khối Hành chính)'],
+     vi:{name:'KPI Cultural',purpose:'Lan tỏa nội dung chính thức về WeGolden qua mạng lưới bạn bè cá nhân của Sale.',platform:'Zalo + Facebook',freq:'1 bài/tuần · chốt 16:00 Thứ 2',
+       req:['Đăng 1 bài “3 sao” từ nhóm Trung Thành với LiteFinance','Nội dung và link phải khớp, có #LiteFinance + logo','Facebook ≥ 1.000 bạn bè hoặc người theo dõi, bài để Công khai','Dùng Zalo chăm sóc khách; kết bạn Zalo HR','KPI Văn hóa cơ bản: đăng nội dung, ảnh cá nhân về WeGolden (cả khối Hành chính)'],
        score:['Mỗi bài: 50 điểm','4 bài/tháng: 200 + 50 điểm thưởng','4 tuần liên tiếp không đăng: −200']},
-     en:{name:'Cultural KPI',purpose:'Spread official Lite content through Sales’ personal networks.',platform:'Zalo + Facebook',freq:'1 post/week · cutoff 16:00 Monday',
-       req:['Post one “3-star” post from the “Loyal to LiteFinance” group','Content and link must match, with #LiteFinance + logo','Facebook ≥ 1,000 friends or followers, post set to Public','Use Zalo for client care; add HR on Zalo','Basic Culture KPI: post personal content and photos about Lite (admin staff too)'],
+     en:{name:'Cultural KPI',purpose:'Spread official WeGolden content through Sales’ personal networks.',platform:'Zalo + Facebook',freq:'1 post/week · cutoff 16:00 Monday',
+       req:['Post one “3-star” post from the “Loyal to LiteFinance” group','Content and link must match, with #LiteFinance + logo','Facebook ≥ 1,000 friends or followers, post set to Public','Use Zalo for client care; add HR on Zalo','Basic Culture KPI: post personal content and photos about WeGolden (admin staff too)'],
        score:['Each post: 50 points','4 posts/month: 200 + 50 bonus points','4 consecutive weeks with no posts: −200']}},
     {id:'content',who:'all',full:200,bonus:50,mod:'Audit',
      vi:{name:'KPI Content',purpose:'Xây thương hiệu cá nhân bằng nội dung tự làm, thu hút người xem mới và khách tiềm năng.',platform:'Zalo + Facebook',freq:'2 clip/tuần',
-       req:['1 clip ngắn ≥ 15 giây + 1 clip dài 1 – 1,5 phút','Bắt buộc lộ mặt chính chủ','Nội dung: bắt trend, hài, kiến thức tài chính','Cấm: trùng video Sale khác, reup, slideshow ảnh, lấy video từ Trung Thanh Group','Logo không bị che bởi giao diện app + outro Lite + hashtag','TikTok ≥ 1.000 follow thật, Facebook ≥ 1.000, Zalo chính chủ','CTV mới: áp dụng sau 1 tháng, Leader báo ngày bắt đầu'],
+       req:['1 clip ngắn ≥ 15 giây + 1 clip dài 1 – 1,5 phút','Bắt buộc lộ mặt chính chủ','Nội dung: bắt trend, hài, kiến thức tài chính','Cấm: trùng video Sale khác, reup, slideshow ảnh, lấy video từ Trung Thanh Group','Logo không bị che bởi giao diện app + outro WeGolden + hashtag','TikTok ≥ 1.000 follow thật, Facebook ≥ 1.000, Zalo chính chủ','CTV mới: áp dụng sau 1 tháng, Leader báo ngày bắt đầu'],
        score:['2 bài/tuần: 50 điểm','8 bài/tháng: 200 + 50 điểm thưởng','4 tuần liên tiếp không đăng: −200']},
      en:{name:'Content KPI',purpose:'Build a personal brand with self-made content that attracts new viewers and prospects.',platform:'Zalo + Facebook',freq:'2 clips/week',
-       req:['1 short clip ≥ 15 seconds + 1 long clip of 1 – 1.5 minutes','The account owner’s face must appear','Content: trends, humor, financial knowledge','Not allowed: duplicating other Sales’ videos, reuploads, photo slideshows, videos from Trung Thanh Group','Logo not covered by the app interface + Lite outro + hashtags','TikTok ≥ 1,000 real followers, Facebook ≥ 1,000, own Zalo account','New collaborators: applies after 1 month; the Leader reports the start date'],
+       req:['1 short clip ≥ 15 seconds + 1 long clip of 1 – 1.5 minutes','The account owner’s face must appear','Content: trends, humor, financial knowledge','Not allowed: duplicating other Sales’ videos, reuploads, photo slideshows, videos from Trung Thanh Group','Logo not covered by the app interface + WeGolden outro + hashtags','TikTok ≥ 1,000 real followers, Facebook ≥ 1,000, own Zalo account','New collaborators: applies after 1 month; the Leader reports the start date'],
        score:['2 posts/week: 50 points','8 posts/month: 200 + 50 bonus points','4 consecutive weeks with no posts: −200']}},
     {id:'tiktok',who:'all',full:200,bonus:50,mod:'Audit',
      vi:{name:'KPI TikTok',purpose:'Phủ thương hiệu LiteFinance trên TikTok bằng video ngắn, đăng đều đặn.',platform:'TikTok',freq:'2 video/tuần làm việc',
@@ -1106,12 +1122,12 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
   ];
   const T=k=>k[lang];
   const applies=k=>k.who==='all'||k.who===role;
-  const roleName=r=>r==='leader'?'Leader':L('Nhân viên','Staff');
+  const roleName=r=>r==='leader'?'Sales Leader':L('Nhân viên Sales','Sales Staff');
   const whoLabel=w=>({leader:L('Chỉ Leader','Leader only'),staff:L('Chỉ nhân viên','Staff only'),all:L('Leader + nhân viên','Leader + staff')})[w];
 
   function renderKpiList(){
     const mine=KPIS.filter(applies);
-    document.getElementById('kpiListTitle').textContent=L(`1 · KPI Marketing của ${roleName(role)}`,`1 · Marketing KPIs for ${roleName(role)}`);
+    document.getElementById('kpiListTitle').textContent=L(`1 · Các KPI dành cho ${roleName(role)}`,`1 · KPIs for ${roleName(role)}`);
     document.getElementById('kpiList').innerHTML=mine.map((k,i)=>{const t=T(k);return `
     <details class="kpi">
       <summary>
@@ -1371,7 +1387,7 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
       <h3>${L('Chứng nhận hoàn thành','Certificate of Completion')}</h3>
       <div class="muted">${L('Chứng nhận rằng','This certifies that')}</div>
       <div class="who">${esc(cert.name)}</div>
-      <p style="max-width:52ch;margin:10px auto 0">${L('đã hoàn thành bài kiểm tra kiến thức KPI Wegolden trong chương trình onboarding.','has completed the Wegolden KPI knowledge test as part of onboarding.')}</p>
+      <p style="max-width:52ch;margin:10px auto 0">${L('đã hoàn thành bài kiểm tra kiến thức KPI WeGolden trong chương trình onboarding.','has completed the WeGolden KPI knowledge test as part of onboarding.')}</p>
       <div class="meta">
         <div>${L('Vai trò','Role')}<b>${esc(roleName(cert.role))}</b></div>
         <div>${L('Điểm','Score')}<b>${cert.score}/${cert.total} (${Math.round(cert.score/cert.total*100)}%)</b></div>
@@ -1431,7 +1447,7 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
     let h=`<div class="oc-band ho"><h4>HEAD OFFICE <small>${L('Quản lý toàn cầu','Global management')} · ${HO.length} ${L('người','people')}</small></h4>`+
       lvRow(1,'Ban lãnh đạo (BOD)','Top Management (BOD)')+`<div class="oc-row">${bods.sort((a,b)=>rank(a)-rank(b)).map(chip).join('')}</div>`+
       lvRow(2,'Các phòng ban Head Office','Head Office departments')+
-      `<div class="oc-depts">${depts.map(([g,a])=>`<div class="oc-card"><h5>${esc(g)}<span>${a.length}</span></h5><div class="oc-list">${a.slice().sort((x,y)=>rank(x)-rank(y)).map(chip).join('')}</div></div>`).join('')}</div></div>`;
+      `<div class="oc-depts">${depts.map(([g,a])=>`<div class="oc-card${a.length>6?' wide':''}"><h5>${esc(g)}<span>${a.length}</span></h5><div class="oc-list${a.length>6?' grid5':''}">${a.slice().sort((x,y)=>rank(x)-rank(y)).map(chip).join('')}</div></div>`).join('')}</div></div>`;
     h+=`<div class="flow" style="grid-template-columns:1fr;justify-items:center"><div class="arr"><i>↑</i><span>${L('Local Market báo cáo lên Head Office','Local Market reports to Head Office')}</span></div></div>`;
     h+=`<div class="oc-band lm"><h4>LOCAL MARKET <small>${L('Theo thị trường / quốc gia','By market / country')} · ${LM.length} ${L('người','people')}</small></h4>`+
       lvRow(3,'Business Development (BD) và thị trường phụ trách','Business Development (BD) and markets covered')+
@@ -1552,7 +1568,7 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
       `<span><i style="background:repeating-linear-gradient(45deg,var(--sunk) 0 3px,color-mix(in srgb,var(--ink-2) 30%,transparent) 3px 6px)"></i>${L('Mất do Marketing (không hoàn)','Lost to Marketing (not recoverable)')}</span>`;
     const pct=v=>Math.round(v*100)+'%';
     document.getElementById('scSteps').innerHTML=
-      `<li><div><b>${L('KPI Marketing → Lương cơ bản điều chỉnh','Marketing KPI → Adjusted base salary')}</b><div class="f">${money(base)} × ${pct(mk)}</div><div class="amt">${money(adj)}</div>${lostMk>0?`<div class="f">${L('Không được nhận, không hoàn lại','Not earned, not recoverable')}: ${money(lostMk)}</div>`:''}</div></li>`+
+      `<li><div><b>${L('KPI Marketing định hướng bán hàng → Lương cơ bản điều chỉnh','Sales-Driven Marketing KPI → Adjusted base salary')}</b><div class="f">${money(base)} × ${pct(mk)}</div><div class="amt">${money(adj)}</div>${lostMk>0?`<div class="f">${L('Không được nhận, không hoàn lại','Not earned, not recoverable')}: ${money(lostMk)}</div>`:''}</div></li>`+
       `<li><div><b>${L('Ngày công thực tế → Lương thực tế','Working days → Actual earned salary')}</b><div class="f">${money(adj)} × (${fmt(ad)} / ${fmt(sd)})</div><div class="amt">${money(earned)}</div></div></li>`+
       `<li><div><b>${L('Giữ lương theo KPI Net','Net KPI withholding')}</b><div class="f">${money(earned)} × ${pct(nr)}</div><div class="amt bad">${money(hold)}</div><div class="f">${L('HR ghi nhận là lương bị giữ, có thể hoàn lại theo chính sách phục hồi','Recorded by HR as withheld salary, subject to the recovery policies')}</div></div></li>`+
       `<li><div><b>${L('Lương thực nhận','Final salary')}</b><div class="f">${money(earned)} − ${money(hold)}</div><div class="amt">${money(fin)}</div></div></li>`;
@@ -1577,14 +1593,14 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
   /* language */
   function applyLang(){
     root.lang=lang;
-    document.title=L('Cẩm nang KPI Wegolden','Wegolden KPI Handbook');
+    document.title=L('Cẩm nang KPI WeGolden','WeGolden KPI Handbook');
     document.querySelectorAll('[data-en]').forEach(el=>{
       if(el.dataset.vi===undefined)el.dataset.vi=el.innerHTML;
       el.innerHTML=lang==='en'?el.dataset.en:el.dataset.vi;
     });
     document.querySelectorAll('.num-1650').forEach(el=>el.textContent=fmt(1650));
     document.querySelectorAll('[data-lang]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===lang?'true':'false'));
-    renderTicks();applyRole();renderOrg();salcalc();ib();sim();quiz();tix();renderResult();renderCert();
+    renderTicks();applyRole();renderOrg();salcalc();if(typeof centerTab==='function')centerTab();ib();sim();quiz();tix();renderResult();renderCert();
   }
   document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>{
     lang=b.dataset.lang;try{localStorage.setItem('kpi-lang',lang);}catch(e){}applyLang();
