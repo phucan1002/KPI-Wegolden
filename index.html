@@ -762,7 +762,7 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
     <div class="intro"><h3 data-en="How your monthly salary is calculated">Cách tính lương thực nhận hằng tháng</h3><p class="muted" data-en="Salary is calculated in 4 steps, in this order. Enter your numbers to see each step. Defaults show the approved example.">Lương được tính qua 4 bước, theo đúng thứ tự. Nhập số liệu để xem từng bước. Số mặc định là ví dụ đã được duyệt.</p></div>
     <div class="calc">
       <div class="panel">
-        <div class="field"><label for="scBase" data-en="Original base salary (VND)">Lương cơ bản gốc (VND)</label><input id="scBase" type="number" min="0" step="100000" value="10000000" inputmode="numeric"></div>
+        <div class="field"><label for="scBase" data-en="Original base salary">Lương cơ bản gốc</label><input id="scBase" type="number" min="0" step="100000" value="10000000" inputmode="numeric"></div>
         <div class="field"><label for="scMk" data-en="Sales-Driven Marketing KPI salary rate (tab 2)">Tỷ lệ lương KPI Marketing định hướng bán hàng (tab 2)</label>
           <select id="scMk" style="border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--surface)"><option value="0">0%</option><option value="25">25%</option><option value="50">50%</option><option value="75" selected>75%</option><option value="100">100%</option></select>
           <button type="button" class="theme-btn" id="scFromMk" style="align-self:flex-start;margin-top:4px"></button></div>
@@ -904,7 +904,7 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
         <div style="text-align:center;background:var(--sunk);border-radius:10px;padding:10px"><div style="font-size:1.6rem;font-weight:900">3</div><div class="small" data-en="Third prizes">Giải Ba</div></div>
       </div>
       <p class="small" data-en="Total pool <b>50,000,000 VND</b>, drawn over several rounds.">Tổng quỹ <b>50.000.000đ</b>, quay nhiều vòng.</p>
-      <div class="field"><label for="salary" data-en="Your actual salary this month (million VND)">Lương thực nhận tháng này (triệu đồng)</label><input id="salary" type="number" min="0" value="30" inputmode="decimal"></div>
+      <div class="field"><label for="salary" data-en="Your actual salary this month (million)">Lương thực nhận tháng này (triệu)</label><input id="salary" type="number" min="0" value="30" inputmode="decimal"></div>
       <div><b id="ticketCount"></b></div>
       <div class="tickets" id="tickets" aria-hidden="true"></div>
       <div class="callout bad" style="margin-top:14px" data-en="<b>You must be on Zoom</b> during the draw. If absent, you lose the right to the prize."><b>Phải có mặt trên Zoom</b> lúc quay. Vắng mặt là mất quyền nhận giải.</div>
@@ -1056,10 +1056,10 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
   const KPIS=[
     {id:'offtrade',who:'leader',full:250,bonus:50,mod:'Audit',
      vi:{name:'KPI Off Trade',purpose:'Leader xuất hiện như chuyên gia: video phân tích tin tức, kỹ thuật, lộ mặt để tạo sự thân thiện và niềm tin với người xem.',platform:'TikTok + Facebook',freq:'5 video/tuần · tối đa 2 video/ngày',
-       req:['Video 1 phút – 1 phút 30 (dài hơn cũng được)','Nội dung: phân tích tin tức, phân tích kỹ thuật, nhận định tài chính','Bắt buộc lộ mặt, kể cả livestream','Logo LiteFinance suốt video + outro WeGolden','Hashtag #LiteFinance #LiteFinanceVN','Không chứa logo/giao diện Facebook, Instagram, YouTube'],
+       req:['Video 1 phút – 1 phút 30 (dài hơn cũng được)','Nội dung: phân tích tin tức, phân tích kỹ thuật, nhận định tài chính','Bắt buộc lộ mặt, kể cả livestream','Logo WeGolden suốt video + outro WeGolden','Hashtag #WeGolden #WeGoldenVN','Không chứa logo/giao diện Facebook, Instagram, YouTube'],
        score:['5 bài/tuần: 50 điểm','25 bài/tháng: 250 + 50 điểm thưởng','Tuần không đăng: 0 điểm','4 tuần liên tiếp không đăng: −200']},
      en:{name:'Off Trade KPI',purpose:'Leaders appear as experts: news and technical analysis videos, face on camera to build friendliness and trust with viewers.',platform:'TikTok + Facebook',freq:'5 videos/week · max 2 videos/day',
-       req:['Videos of 1 – 1.5 minutes (longer is fine)','Content: news analysis, technical analysis, financial views','Face on camera is mandatory, including livestreams','LiteFinance logo throughout + WeGolden outro','Hashtags #LiteFinance #LiteFinanceVN','No Facebook, Instagram or YouTube logos/interface'],
+       req:['Videos of 1 – 1.5 minutes (longer is fine)','Content: news analysis, technical analysis, financial views','Face on camera is mandatory, including livestreams','WeGolden logo throughout + WeGolden outro','Hashtags #WeGolden #WeGoldenVN','No Facebook, Instagram or YouTube logos/interface'],
        score:['5 posts/week: 50 points','25 posts/month: 250 + 50 bonus points','Week with no posts: 0 points','4 consecutive weeks with no posts: −200']}},
     {id:'telegram',who:'staff',full:200,bonus:0,mod:'Audit',team:true,
      vi:{name:'KPI Telegram',purpose:'Giữ các nhóm Telegram luôn sôi động bằng tương tác thật, đều đặn mỗi ngày.',platform:'Telegram',freq:'25 tin nhắn hợp lệ/ngày · Thứ 2 – Thứ 6',
@@ -1079,17 +1079,17 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
        score:['2 posts/week: 50 points','8 posts/month: 200 + 50 bonus points','4 consecutive weeks with no posts: −200']}},
     {id:'tbcompany',who:'all',full:200,bonus:50,mod:'Audit + HR',
      vi:{name:'KPI Teambuilding (công ty tổ chức)',purpose:'Lan tỏa hình ảnh một đội ngũ gắn kết, chuyên nghiệp ra mạng xã hội.',platform:'Zalo + Facebook',freq:'1 bài/tuần',
-       req:['Đăng nội dung họp nhóm + ảnh liên quan WeGolden','Đủ mặt thành viên (trừ khi trợ lý & HR duyệt ngoại lệ)','Đính kèm hóa đơn và ảnh buổi họp','Lộ mặt, mặc đồng phục (hiện có thể thay bằng logo WeGolden)','Hashtag #LiteFinance #TeamBuilding + banner WeGolden'],
+       req:['Đăng nội dung họp nhóm + ảnh liên quan WeGolden','Đủ mặt thành viên (trừ khi trợ lý & HR duyệt ngoại lệ)','Đính kèm hóa đơn và ảnh buổi họp','Lộ mặt, mặc đồng phục (hiện có thể thay bằng logo WeGolden)','Hashtag #WeGolden #TeamBuilding + banner WeGolden'],
        score:['Mỗi bài: 50 điểm','4 bài/tháng: 200 + 50 điểm thưởng','4 tuần liên tiếp không đăng: −200']},
      en:{name:'Teambuilding KPI (company-organized)',purpose:'Show a cohesive, professional team on social media.',platform:'Zalo + Facebook',freq:'1 post/week',
-       req:['Post about the team meeting + WeGolden-related photos','All members present (unless the assistant & HR approve an exception)','Attach the receipt and meeting photos','Faces visible, uniforms worn (a WeGolden logo may currently substitute)','Hashtags #LiteFinance #TeamBuilding + WeGolden banner'],
+       req:['Post about the team meeting + WeGolden-related photos','All members present (unless the assistant & HR approve an exception)','Attach the receipt and meeting photos','Faces visible, uniforms worn (a WeGolden logo may currently substitute)','Hashtags #WeGolden #TeamBuilding + WeGolden banner'],
        score:['Each post: 50 points','4 posts/month: 200 + 50 bonus points','4 consecutive weeks with no posts: −200']}},
     {id:'tbleader',who:'all',full:0,bonus:50,mod:'HR',adhoc:true,
      vi:{name:'KPI Teambuilding (Leader tổ chức)',purpose:'Khuyến khích Leader chủ động gắn kết team, chi phí lấy từ quỹ thưởng KPI văn phòng.',platform:'Zalo',freq:'Khi có phát sinh',
-       req:['Đăng nội dung tham gia teambuilding do SC tổ chức','Đính kèm hóa đơn và ảnh, lộ mặt, đồng phục/logo WeGolden','Hashtag #LiteFinance #TeamBuilding + banner WeGolden','Chi từ quỹ thưởng KPI văn phòng'],
+       req:['Đăng nội dung tham gia teambuilding do SC tổ chức','Đính kèm hóa đơn và ảnh, lộ mặt, đồng phục/logo WeGolden','Hashtag #WeGolden #TeamBuilding + banner WeGolden','Chi từ quỹ thưởng KPI văn phòng'],
        score:['Mỗi bài phát sinh: +50 điểm']},
      en:{name:'Teambuilding KPI (Leader-organized)',purpose:'Encourage Leaders to bond their teams proactively, funded by the office KPI bonus pool.',platform:'Zalo',freq:'As it happens',
-       req:['Post about joining a teambuilding organized by the SC','Attach receipt and photos, faces visible, uniform/WeGolden logo','Hashtags #LiteFinance #TeamBuilding + WeGolden banner','Funded by the office KPI bonus pool'],
+       req:['Post about joining a teambuilding organized by the SC','Attach receipt and photos, faces visible, uniform/WeGolden logo','Hashtags #WeGolden #TeamBuilding + WeGolden banner','Funded by the office KPI bonus pool'],
        score:['Each extra post: +50 points']}},
     {id:'airdrop',who:'all',full:200,bonus:50,mod:'HR',
      vi:{name:'KPI Airdrop',purpose:'Tăng lượt xem và độ phủ cho các buổi livestream bằng cách chia sẻ đúng ngày diễn ra.',platform:'Zalo + Facebook',freq:'1 livestream/tuần · Thứ 2 – Thứ 6',
@@ -1100,10 +1100,10 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
        score:['Each post: 50 points','4 posts/month: 200 + 50 bonus points','4 consecutive weeks with no posts: −200']}},
     {id:'cultural',who:'all',full:200,bonus:50,mod:'HR',
      vi:{name:'KPI Cultural',purpose:'Lan tỏa nội dung chính thức về WeGolden qua mạng lưới bạn bè cá nhân của Sale.',platform:'Zalo + Facebook',freq:'1 bài/tuần · chốt 16:00 Thứ 2',
-       req:['Đăng 1 bài “3 sao” từ nhóm Trung Thành với LiteFinance','Nội dung và link phải khớp, có #LiteFinance + logo','Facebook ≥ 1.000 bạn bè hoặc người theo dõi, bài để Công khai','Dùng Zalo chăm sóc khách; kết bạn Zalo HR','KPI Văn hóa cơ bản: đăng nội dung, ảnh cá nhân về WeGolden (cả khối Hành chính)'],
+       req:['Đăng 1 bài “3 sao” từ nhóm Trung Thành với WeGolden','Nội dung và link phải khớp, có #WeGolden + logo','Facebook ≥ 1.000 bạn bè hoặc người theo dõi, bài để Công khai','Dùng Zalo chăm sóc khách; kết bạn Zalo HR','KPI Văn hóa cơ bản: đăng nội dung, ảnh cá nhân về WeGolden (cả khối Hành chính)'],
        score:['Mỗi bài: 50 điểm','4 bài/tháng: 200 + 50 điểm thưởng','4 tuần liên tiếp không đăng: −200']},
      en:{name:'Cultural KPI',purpose:'Spread official WeGolden content through Sales’ personal networks.',platform:'Zalo + Facebook',freq:'1 post/week · cutoff 16:00 Monday',
-       req:['Post one “3-star” post from the “Loyal to LiteFinance” group','Content and link must match, with #LiteFinance + logo','Facebook ≥ 1,000 friends or followers, post set to Public','Use Zalo for client care; add HR on Zalo','Basic Culture KPI: post personal content and photos about WeGolden (admin staff too)'],
+       req:['Post one “3-star” post from the “Loyal to WeGolden” group','Content and link must match, with #WeGolden + logo','Facebook ≥ 1,000 friends or followers, post set to Public','Use Zalo for client care; add HR on Zalo','Basic Culture KPI: post personal content and photos about WeGolden (admin staff too)'],
        score:['Each post: 50 points','4 posts/month: 200 + 50 bonus points','4 consecutive weeks with no posts: −200']}},
     {id:'content',who:'all',full:200,bonus:50,mod:'Audit',
      vi:{name:'KPI Content',purpose:'Xây thương hiệu cá nhân bằng nội dung tự làm, thu hút người xem mới và khách tiềm năng.',platform:'Zalo + Facebook',freq:'2 clip/tuần',
@@ -1113,11 +1113,11 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
        req:['1 short clip ≥ 15 seconds + 1 long clip of 1 – 1.5 minutes','The account owner’s face must appear','Content: trends, humor, financial knowledge','Not allowed: duplicating other Sales’ videos, reuploads, photo slideshows, videos from Trung Thanh Group','Logo not covered by the app interface + WeGolden outro + hashtags','TikTok ≥ 1,000 real followers, Facebook ≥ 1,000, own Zalo account','New collaborators: applies after 1 month; the Leader reports the start date'],
        score:['2 posts/week: 50 points','8 posts/month: 200 + 50 bonus points','4 consecutive weeks with no posts: −200']}},
     {id:'tiktok',who:'all',full:200,bonus:50,mod:'Audit',
-     vi:{name:'KPI TikTok',purpose:'Phủ thương hiệu LiteFinance trên TikTok bằng video ngắn, đăng đều đặn.',platform:'TikTok',freq:'2 video/tuần làm việc',
-       req:['Tự sáng tạo hoặc dùng nguồn Trung Thanh Group','Tối thiểu 10 giây','Bắt buộc logo LiteFinance','Hashtag hiện chưa bắt buộc','Bắt buộc lộ mặt'],
+     vi:{name:'KPI TikTok',purpose:'Phủ thương hiệu WeGolden trên TikTok bằng video ngắn, đăng đều đặn.',platform:'TikTok',freq:'2 video/tuần làm việc',
+       req:['Tự sáng tạo hoặc dùng nguồn từ Nhóm chính thức (Official Group)','Tối thiểu 10 giây','Bắt buộc logo WeGolden','Hashtag hiện chưa bắt buộc','Bắt buộc lộ mặt'],
        score:['2 bài/tuần: 50 điểm','8 bài/tháng: 200 + 50 điểm thưởng','4 tuần liên tiếp không đăng: −200']},
-     en:{name:'TikTok KPI',purpose:'Cover TikTok with the LiteFinance brand through short, regular videos.',platform:'TikTok',freq:'2 videos/working week',
-       req:['Original content or material from Trung Thanh Group','At least 10 seconds','LiteFinance logo is mandatory','Hashtags not yet required','Face on camera is mandatory'],
+     en:{name:'TikTok KPI',purpose:'Cover TikTok with the WeGolden brand through short, regular videos.',platform:'TikTok',freq:'2 videos/working week',
+       req:['Original content or material from the Official Group','At least 10 seconds','WeGolden logo is mandatory','Hashtags not yet required','Face on camera is mandatory'],
        score:['2 posts/week: 50 points','8 posts/month: 200 + 50 bonus points','4 consecutive weeks with no posts: −200']}}
   ];
   const T=k=>k[lang];
@@ -1547,7 +1547,7 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
 
   /* ---------- Salary calculator (tab 3) ---------- */
   let mkTierPct=null;
-  const money=n=>n.toLocaleString(lang==='en'?'en-US':'vi-VN',{minimumFractionDigits:0,maximumFractionDigits:2})+' VND';
+  const money=n=>n.toLocaleString(lang==='en'?'en-US':'vi-VN',{minimumFractionDigits:0,maximumFractionDigits:2});
   function salcalc(){
     const base=Math.max(0,+document.getElementById('scBase').value||0);
     const mk=+document.getElementById('scMk').value/100;
