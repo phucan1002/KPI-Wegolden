@@ -71,6 +71,9 @@ nav.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;margin:0;padd
 .subtabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin:20px 0 0;overflow-x:auto;scrollbar-width:none}
 .subtabs button{border:0;background:none;padding:10px 18px;font-weight:700;font-size:.98rem;color:var(--ink-2);border-bottom:3px solid transparent;margin-bottom:-1px;cursor:pointer;white-space:nowrap}
 .subtabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--teal)}
+.prob{display:flex;gap:10px;align-items:flex-start;background:var(--good-soft);border-radius:10px;padding:10px 12px;margin-bottom:12px;font-size:.9rem;cursor:pointer}
+.prob input{margin-top:4px;accent-color:var(--good)}
+.calc-row select:disabled,.panel select:disabled{opacity:.5}
 .subpane{display:none}.subpane.on{display:block}
 .oc-card.wide{grid-column:1/-1}
 .oc-list.grid5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
@@ -624,6 +627,7 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
 
   <div class="block" style="margin-top:28px">
     <div class="intro"><h3 id="kpiListTitle"></h3><p class="purpose" data-en="<b>Overall purpose of Sales-Driven Marketing KPIs:</b> attract the market, raise brand awareness and build a foundation for Sales. Sales build a personal brand, gain credibility and more chances to close. The company gains brand coverage and new clients."><b>Mục đích chung của KPI Marketing định hướng bán hàng:</b> thu hút thị trường, tăng nhận diện thương hiệu và tạo nền tảng cho Sale khai thác. Sale xây thương hiệu cá nhân, tăng uy tín và cơ hội chốt khách. Công ty tăng độ phủ thương hiệu và thu hút khách mới.</p><p class="muted small" data-en="The line under each KPI’s name is that KPI’s specific purpose. The file only states an overall purpose for the group, so each KPI’s purpose is interpreted from its requirements. Click to see details.">Dòng mô tả dưới tên mỗi KPI là tác dụng riêng của KPI đó. File chỉ nêu mục đích chung cho cả nhóm, nên tác dụng riêng được diễn giải từ yêu cầu của từng KPI. Bấm vào để xem chi tiết.</p></div>
+    <div class="callout" style="margin-bottom:14px" data-en="<b>Branding on every post:</b> use the WG logo and outro (Wegolden / WeMasterTrade). Required hashtags for Off Trade, Content and Cultural posts: <b>#Wegolden #WeMasterTrade #WG</b>."><b>Nhận diện thương hiệu trên mọi bài đăng:</b> dùng logo và outro WG (Wegolden / WeMasterTrade). Hashtag bắt buộc cho bài đăng Off Trade, Content, Cultural: <b>#Wegolden #WeMasterTrade #WG</b>.</div>
     <div class="kpi-list" id="kpiList"></div>
   </div>
   <div class="block">
@@ -632,13 +636,13 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
       <div class="panel"><h4 id="maxTitle"></h4><div class="scroll"><table class="tiers" id="maxTbl"></table></div></div>
       <div class="panel"><h4 data-en="Salary payout conversion (Salary Payout table, sheet 2)">Bảng quy đổi % lương (bảng Salary Payout, sheet 2)</h4><table class="tiers" id="payTbl"></table><p class="small muted" style="margin-top:10px" data-en="In the file, each tier is written as a formula: 25% = 1,650 × 0.25; 50% = 1,650 × 0.5; 75% = 1,650 × 0.75.">Trong file, mỗi mốc được ghi bằng công thức: 25% = 1.650 × 0,25; 50% = 1.650 × 0,5; 75% = 1.650 × 0,75.</p></div>
     </div>
-    <div class="callout teal" style="margin-top:16px"><b data-en="How the points are calculated">Cách tính điểm</b><ul class="clean small" style="margin-top:6px" data-en="<li><b>Step 1: split by role.</b> Only the KPIs of your role are added up. Leaders do not count Telegram; staff do not count Off Trade.</li><li><b>Step 2: add up points and compare by tier.</b> You must reach a tier to receive that percentage. Example: 1,000 points is between 825 and 1,237.5, so you receive <b>50%</b>.</li><li><b>Points above 1,650:</b> (Actual points − 1,650) = Cash bonus.</li>"><li><b>Bước 1: phân theo vai trò.</b> Chỉ cộng các KPI thuộc vai trò của mình. Leader không tính Telegram, nhân viên không tính Off Trade.</li><li><b>Bước 2: cộng điểm và đối chiếu theo bậc.</b> Phải chạm mốc mới được nhận mức % đó. Ví dụ được 1.000 điểm, nằm giữa 825 và 1.237,5, nên nhận <b>50%</b> lương.</li><li><b>Điểm vượt 1.650:</b> (Điểm thực tế − 1.650) = Tiền thưởng.</li></ul></div>
+    <div class="callout teal" style="margin-top:16px"><b data-en="How the points are calculated">Cách tính điểm</b><ul class="clean small" style="margin-top:6px" data-en="<li><b>Step 1: split by role.</b> Only the KPIs of your role are added up. Leaders do not count Telegram; staff do not count Off Trade.</li><li><b>Step 2: add up points and compare by tier.</b> You must reach a tier to receive that percentage. Example: 1,000 points is between 825 and 1,237.5, so you receive <b>50%</b>.</li><li><b>Points above 1,650:</b> (Actual points − 1,650) = Cash bonus.</li><li><b>Month 1 (probation):</b> the Marketing KPI is locked at 100% (full agreed base salary).</li>"><li><b>Bước 1: phân theo vai trò.</b> Chỉ cộng các KPI thuộc vai trò của mình. Leader không tính Telegram, nhân viên không tính Off Trade.</li><li><b>Bước 2: cộng điểm và đối chiếu theo bậc.</b> Phải chạm mốc mới được nhận mức % đó. Ví dụ được 1.000 điểm, nằm giữa 825 và 1.237,5, nên nhận <b>50%</b> lương.</li><li><b>Điểm vượt 1.650:</b> (Điểm thực tế − 1.650) = Tiền thưởng.</li><li><b>Tháng 1 (thử việc):</b> KPI Marketing được khóa ở 100% (hưởng đủ 100% lương cơ bản thỏa thuận).</li></ul></div>
   </div>
 
   <div class="block">
     <div class="intro"><h3 data-en="3 · Try calculating this month’s points">3 · Tính thử điểm tháng này</h3><p class="muted" data-en="Choose how many weeks you completed for each KPI of your role.">Chọn số tuần bạn hoàn thành ở từng KPI của vai trò mình.</p></div>
     <div class="calc">
-      <div class="panel"><div id="calcRows"></div></div>
+      <div class="panel"><label class="prob"><input type="checkbox" class="probChk"> <span data-en="<b>Month 1 – Probation:</b> locks the Marketing KPI at 100% (full agreed base salary)"><b>Tháng 1 – thử việc (Probation):</b> khóa KPI Marketing ở 100% (hưởng đủ 100% lương cơ bản thỏa thuận)</span></label><div id="calcRows"></div></div>
       <div class="panel result" aria-live="polite">
         <div class="small muted" data-en="Total points this month">Tổng điểm tháng</div>
         <div class="big" id="totalPts">0</div>
@@ -762,6 +766,7 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
     <div class="intro"><h3 data-en="How your monthly salary is calculated">Cách tính lương thực nhận hằng tháng</h3><p class="muted" data-en="Salary is calculated in 4 steps, in this order. Enter your numbers to see each step. Defaults show the approved example.">Lương được tính qua 4 bước, theo đúng thứ tự. Nhập số liệu để xem từng bước. Số mặc định là ví dụ đã được duyệt.</p></div>
     <div class="calc">
       <div class="panel">
+        <label class="prob"><input type="checkbox" class="probChk"> <span data-en="<b>Month 1 – Probation:</b> Marketing KPI locked at 100%, no Net withholding"><b>Tháng 1 – thử việc (Probation):</b> khóa KPI Marketing 100%, không giữ lương Net</span></label>
         <div class="field"><label for="scBase" data-en="Original base salary">Lương cơ bản gốc</label><input id="scBase" type="number" min="0" step="100000" value="10000000" inputmode="numeric"></div>
         <div class="field"><label for="scMk" data-en="Sales-Driven Marketing KPI salary rate (tab 2)">Tỷ lệ lương KPI Marketing định hướng bán hàng (tab 2)</label>
           <select id="scMk" style="border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--surface)"><option value="0">0%</option><option value="25">25%</option><option value="50">50%</option><option value="75" selected>75%</option><option value="100">100%</option></select>
@@ -1056,10 +1061,10 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
   const KPIS=[
     {id:'offtrade',who:'leader',full:250,bonus:50,mod:'Audit',
      vi:{name:'KPI Off Trade',purpose:'Leader xuất hiện như chuyên gia: video phân tích tin tức, kỹ thuật, lộ mặt để tạo sự thân thiện và niềm tin với người xem.',platform:'TikTok + Facebook',freq:'5 video/tuần · tối đa 2 video/ngày',
-       req:['Video 1 phút – 1 phút 30 (dài hơn cũng được)','Nội dung: phân tích tin tức, phân tích kỹ thuật, nhận định tài chính','Bắt buộc lộ mặt, kể cả livestream','Logo WeGolden suốt video + outro WeGolden','Hashtag #WeGolden #WeGoldenVN','Không chứa logo/giao diện Facebook, Instagram, YouTube'],
+       req:['Video 1 phút – 1 phút 30 (dài hơn cũng được)','Nội dung: phân tích tin tức, phân tích kỹ thuật, nhận định tài chính','Bắt buộc lộ mặt, kể cả livestream','Logo WG (Wegolden / WeMasterTrade) suốt video + outro WG','Hashtag bắt buộc: #Wegolden #WeMasterTrade #WG','Không chứa logo/giao diện Facebook, Instagram, YouTube'],
        score:['5 bài/tuần: 50 điểm','25 bài/tháng: 250 + 50 điểm thưởng','Tuần không đăng: 0 điểm','4 tuần liên tiếp không đăng: −200']},
      en:{name:'Off Trade KPI',purpose:'Leaders appear as experts: news and technical analysis videos, face on camera to build friendliness and trust with viewers.',platform:'TikTok + Facebook',freq:'5 videos/week · max 2 videos/day',
-       req:['Videos of 1 – 1.5 minutes (longer is fine)','Content: news analysis, technical analysis, financial views','Face on camera is mandatory, including livestreams','WeGolden logo throughout + WeGolden outro','Hashtags #WeGolden #WeGoldenVN','No Facebook, Instagram or YouTube logos/interface'],
+       req:['Videos of 1 – 1.5 minutes (longer is fine)','Content: news analysis, technical analysis, financial views','Face on camera is mandatory, including livestreams','WG logo (Wegolden / WeMasterTrade) throughout + WG outro','Required hashtags: #Wegolden #WeMasterTrade #WG','No Facebook, Instagram or YouTube logos/interface'],
        score:['5 posts/week: 50 points','25 posts/month: 250 + 50 bonus points','Week with no posts: 0 points','4 consecutive weeks with no posts: −200']}},
     {id:'telegram',who:'staff',full:200,bonus:0,mod:'Audit',team:true,
      vi:{name:'KPI Telegram',purpose:'Giữ các nhóm Telegram luôn sôi động bằng tương tác thật, đều đặn mỗi ngày.',platform:'Telegram',freq:'25 tin nhắn hợp lệ/ngày · Thứ 2 – Thứ 6',
@@ -1072,24 +1077,24 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
        score:['Whole team meets it 4 weeks in a row: +200 for the team','Whole team misses it 4 weeks in a row: −200 for the team']}},
     {id:'slogan',who:'all',full:200,bonus:50,mod:'Audit',
      vi:{name:'KPI Slogan',purpose:'Thấm văn hóa và tinh thần WeGolden qua khẩu hiệu, tạo kỷ luật đều đặn mỗi tuần.',platform:'Telegram (app)',freq:'Thứ 2 và Thứ 4, trước 12:00',
-       req:['Quay video đọc khẩu hiệu WeGolden, gửi lên ứng dụng','Hô rõ ngày/tháng/năm trong video','Áp dụng cho SC và toàn bộ CTV'],
+       req:['Quay video đọc khẩu hiệu chính thức của WG, gửi lên ứng dụng','Hô rõ ngày/tháng/năm trong video','Áp dụng cho SC và toàn bộ CTV'],
        score:['2 bài/tuần: 50 điểm','8 bài/tháng: 200 + 50 điểm thưởng','4 tuần liên tiếp không đăng: −200']},
      en:{name:'Slogan KPI',purpose:'Instill WeGolden’s culture and spirit through the slogan, building weekly discipline.',platform:'Telegram (app)',freq:'Monday and Wednesday, before 12:00',
-       req:['Record a video reciting the WeGolden slogan and upload it to the app','State the date clearly in the video','Applies to SCs and all collaborators'],
+       req:['Record a video reciting the official WG slogan and upload it to the app','State the date clearly in the video','Applies to SCs and all collaborators'],
        score:['2 posts/week: 50 points','8 posts/month: 200 + 50 bonus points','4 consecutive weeks with no posts: −200']}},
     {id:'tbcompany',who:'all',full:200,bonus:50,mod:'Audit + HR',
      vi:{name:'KPI Teambuilding (công ty tổ chức)',purpose:'Lan tỏa hình ảnh một đội ngũ gắn kết, chuyên nghiệp ra mạng xã hội.',platform:'Zalo + Facebook',freq:'1 bài/tuần',
-       req:['Đăng nội dung họp nhóm + ảnh liên quan WeGolden','Đủ mặt thành viên (trừ khi trợ lý & HR duyệt ngoại lệ)','Đính kèm hóa đơn và ảnh buổi họp','Lộ mặt, mặc đồng phục (hiện có thể thay bằng logo WeGolden)','Hashtag #WeGolden #TeamBuilding + banner WeGolden'],
+       req:['Đăng nội dung họp nhóm + ảnh liên quan WG','Đủ mặt thành viên (trừ khi trợ lý & HR duyệt ngoại lệ)','Đính kèm hóa đơn và ảnh buổi họp','Lộ mặt, mặc đồng phục (hiện có thể thay bằng logo WG)','Hashtag #WeGolden #TeamBuilding + banner WG'],
        score:['Mỗi bài: 50 điểm','4 bài/tháng: 200 + 50 điểm thưởng','4 tuần liên tiếp không đăng: −200']},
      en:{name:'Teambuilding KPI (company-organized)',purpose:'Show a cohesive, professional team on social media.',platform:'Zalo + Facebook',freq:'1 post/week',
-       req:['Post about the team meeting + WeGolden-related photos','All members present (unless the assistant & HR approve an exception)','Attach the receipt and meeting photos','Faces visible, uniforms worn (a WeGolden logo may currently substitute)','Hashtags #WeGolden #TeamBuilding + WeGolden banner'],
+       req:['Post about the team meeting + WG-related photos','All members present (unless the assistant & HR approve an exception)','Attach the receipt and meeting photos','Faces visible, uniforms worn (a WG logo may currently substitute)','Hashtags #WeGolden #TeamBuilding + WG banner'],
        score:['Each post: 50 points','4 posts/month: 200 + 50 bonus points','4 consecutive weeks with no posts: −200']}},
     {id:'tbleader',who:'all',full:0,bonus:50,mod:'HR',adhoc:true,
      vi:{name:'KPI Teambuilding (Leader tổ chức)',purpose:'Khuyến khích Leader chủ động gắn kết team, chi phí lấy từ quỹ thưởng KPI văn phòng.',platform:'Zalo',freq:'Khi có phát sinh',
-       req:['Đăng nội dung tham gia teambuilding do SC tổ chức','Đính kèm hóa đơn và ảnh, lộ mặt, đồng phục/logo WeGolden','Hashtag #WeGolden #TeamBuilding + banner WeGolden','Chi từ quỹ thưởng KPI văn phòng'],
+       req:['Đăng nội dung tham gia teambuilding do SC tổ chức','Đính kèm hóa đơn và ảnh, lộ mặt, đồng phục/logo WG','Hashtag #WeGolden #TeamBuilding + banner WG','Chi từ quỹ thưởng KPI văn phòng'],
        score:['Mỗi bài phát sinh: +50 điểm']},
      en:{name:'Teambuilding KPI (Leader-organized)',purpose:'Encourage Leaders to bond their teams proactively, funded by the office KPI bonus pool.',platform:'Zalo',freq:'As it happens',
-       req:['Post about joining a teambuilding organized by the SC','Attach receipt and photos, faces visible, uniform/WeGolden logo','Hashtags #WeGolden #TeamBuilding + WeGolden banner','Funded by the office KPI bonus pool'],
+       req:['Post about joining a teambuilding organized by the SC','Attach receipt and photos, faces visible, uniform/WG logo','Hashtags #WeGolden #TeamBuilding + WG banner','Funded by the office KPI bonus pool'],
        score:['Each extra post: +50 points']}},
     {id:'airdrop',who:'all',full:200,bonus:50,mod:'HR',
      vi:{name:'KPI Airdrop',purpose:'Tăng lượt xem và độ phủ cho các buổi livestream bằng cách chia sẻ đúng ngày diễn ra.',platform:'Zalo + Facebook',freq:'1 livestream/tuần · Thứ 2 – Thứ 6',
@@ -1100,24 +1105,24 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
        score:['Each post: 50 points','4 posts/month: 200 + 50 bonus points','4 consecutive weeks with no posts: −200']}},
     {id:'cultural',who:'all',full:200,bonus:50,mod:'HR',
      vi:{name:'KPI Cultural',purpose:'Lan tỏa nội dung chính thức về WeGolden qua mạng lưới bạn bè cá nhân của Sale.',platform:'Zalo + Facebook',freq:'1 bài/tuần · chốt 16:00 Thứ 2',
-       req:['Đăng 1 bài “3 sao” từ nhóm Trung Thành với WeGolden','Nội dung và link phải khớp, có #WeGolden + logo','Facebook ≥ 1.000 bạn bè hoặc người theo dõi, bài để Công khai','Dùng Zalo chăm sóc khách; kết bạn Zalo HR','KPI Văn hóa cơ bản: đăng nội dung, ảnh cá nhân về WeGolden (cả khối Hành chính)'],
+       req:['Đăng 1 bài “3 sao” từ nhóm văn hóa chính thức của WG (Official Group) trên Telegram/Zalo. Link nhóm mới đang được cập nhật; không dùng link cũ t.me/yeulitefinance','Nội dung và link phải khớp, có hashtag #Wegolden #WeMasterTrade #WG + logo WG','Facebook ≥ 1.000 bạn bè hoặc người theo dõi, bài để Công khai','Dùng Zalo chăm sóc khách; kết bạn Zalo HR','KPI Văn hóa cơ bản: đăng nội dung, ảnh cá nhân về WeGolden (cả khối Hành chính)'],
        score:['Mỗi bài: 50 điểm','4 bài/tháng: 200 + 50 điểm thưởng','4 tuần liên tiếp không đăng: −200']},
      en:{name:'Cultural KPI',purpose:'Spread official WeGolden content through Sales’ personal networks.',platform:'Zalo + Facebook',freq:'1 post/week · cutoff 16:00 Monday',
-       req:['Post one “3-star” post from the “Loyal to WeGolden” group','Content and link must match, with #WeGolden + logo','Facebook ≥ 1,000 friends or followers, post set to Public','Use Zalo for client care; add HR on Zalo','Basic Culture KPI: post personal content and photos about WeGolden (admin staff too)'],
+       req:['Post one “3-star” post from WG’s official culture group (Official Group) on Telegram/Zalo. The new group link is being updated; do not use the old link t.me/yeulitefinance','Content and link must match, with hashtags #Wegolden #WeMasterTrade #WG + WG logo','Facebook ≥ 1,000 friends or followers, post set to Public','Use Zalo for client care; add HR on Zalo','Basic Culture KPI: post personal content and photos about WeGolden (admin staff too)'],
        score:['Each post: 50 points','4 posts/month: 200 + 50 bonus points','4 consecutive weeks with no posts: −200']}},
     {id:'content',who:'all',full:200,bonus:50,mod:'Audit',
      vi:{name:'KPI Content',purpose:'Xây thương hiệu cá nhân bằng nội dung tự làm, thu hút người xem mới và khách tiềm năng.',platform:'Zalo + Facebook',freq:'2 clip/tuần',
-       req:['1 clip ngắn ≥ 15 giây + 1 clip dài 1 – 1,5 phút','Bắt buộc lộ mặt chính chủ','Nội dung: bắt trend, hài, kiến thức tài chính','Cấm: trùng video Sale khác, reup, slideshow ảnh, lấy video từ Trung Thanh Group','Logo không bị che bởi giao diện app + outro WeGolden + hashtag','TikTok ≥ 1.000 follow thật, Facebook ≥ 1.000, Zalo chính chủ','CTV mới: áp dụng sau 1 tháng, Leader báo ngày bắt đầu'],
+       req:['1 clip ngắn ≥ 15 giây + 1 clip dài 1 – 1,5 phút','Bắt buộc lộ mặt chính chủ','Nội dung: bắt trend, hài, kiến thức tài chính','Cấm: trùng video Sale khác, reup, slideshow ảnh, lấy video từ Trung Thanh Group','Logo WG không bị che bởi giao diện app + outro WG + hashtag #Wegolden #WeMasterTrade #WG','TikTok ≥ 1.000 follow thật, Facebook ≥ 1.000, Zalo chính chủ','<b>Nhân sự / CTV mới:</b> sau 1 tháng gia nhập, Team Leader mới chính thức kích hoạt áp dụng KPI Content, nên nhân sự mới không bị tính thiếu điểm ở tháng đầu'],
        score:['2 bài/tuần: 50 điểm','8 bài/tháng: 200 + 50 điểm thưởng','4 tuần liên tiếp không đăng: −200']},
      en:{name:'Content KPI',purpose:'Build a personal brand with self-made content that attracts new viewers and prospects.',platform:'Zalo + Facebook',freq:'2 clips/week',
-       req:['1 short clip ≥ 15 seconds + 1 long clip of 1 – 1.5 minutes','The account owner’s face must appear','Content: trends, humor, financial knowledge','Not allowed: duplicating other Sales’ videos, reuploads, photo slideshows, videos from Trung Thanh Group','Logo not covered by the app interface + WeGolden outro + hashtags','TikTok ≥ 1,000 real followers, Facebook ≥ 1,000, own Zalo account','New collaborators: applies after 1 month; the Leader reports the start date'],
+       req:['1 short clip ≥ 15 seconds + 1 long clip of 1 – 1.5 minutes','The account owner’s face must appear','Content: trends, humor, financial knowledge','Not allowed: duplicating other Sales’ videos, reuploads, photo slideshows, videos from Trung Thanh Group','WG logo not covered by the app interface + WG outro + hashtags #Wegolden #WeMasterTrade #WG','TikTok ≥ 1,000 real followers, Facebook ≥ 1,000, own Zalo account','<b>New staff / collaborators:</b> the Team Leader officially activates the Content KPI only after the first month, so new staff are not penalized for missing points in their first month'],
        score:['2 posts/week: 50 points','8 posts/month: 200 + 50 bonus points','4 consecutive weeks with no posts: −200']}},
     {id:'tiktok',who:'all',full:200,bonus:50,mod:'Audit',
-     vi:{name:'KPI TikTok',purpose:'Phủ thương hiệu WeGolden trên TikTok bằng video ngắn, đăng đều đặn.',platform:'TikTok',freq:'2 video/tuần làm việc',
-       req:['Tự sáng tạo hoặc dùng nguồn từ Nhóm chính thức (Official Group)','Tối thiểu 10 giây','Bắt buộc logo WeGolden','Hashtag hiện chưa bắt buộc','Bắt buộc lộ mặt'],
+     vi:{name:'KPI TikTok',purpose:'Phủ thương hiệu WG trên TikTok bằng video ngắn, đăng đều đặn.',platform:'TikTok',freq:'2 video/tuần làm việc',
+       req:['Tự sáng tạo hoặc dùng nguồn từ Nhóm chính thức (Official Group)','Tối thiểu 10 giây','Bắt buộc logo WG','Hashtag hiện chưa bắt buộc','Bắt buộc lộ mặt'],
        score:['2 bài/tuần: 50 điểm','8 bài/tháng: 200 + 50 điểm thưởng','4 tuần liên tiếp không đăng: −200']},
-     en:{name:'TikTok KPI',purpose:'Cover TikTok with the WeGolden brand through short, regular videos.',platform:'TikTok',freq:'2 videos/working week',
-       req:['Original content or material from the Official Group','At least 10 seconds','WeGolden logo is mandatory','Hashtags not yet required','Face on camera is mandatory'],
+     en:{name:'TikTok KPI',purpose:'Cover TikTok with the WG brand through short, regular videos.',platform:'TikTok',freq:'2 videos/working week',
+       req:['Original content or material from the Official Group','At least 10 seconds','WG logo is mandatory','Hashtags not yet required','Face on camera is mandatory'],
        score:['2 posts/week: 50 points','8 posts/month: 200 + 50 bonus points','4 consecutive weeks with no posts: −200']}}
   ];
   const T=k=>k[lang];
@@ -1147,6 +1152,7 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
   }
 
   /* calculator */
+  let probation=false;
   const rows=document.getElementById('calcRows');
   const calcVals={};
   function renderCalcRows(){
@@ -1181,12 +1187,15 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
     document.getElementById('totalPts').textContent=fmt(total);
     document.getElementById('meterFill').style.width=Math.max(0,Math.min(100,total/MAXM*100))+'%';
     let tier=TIERS[0];TIERS.forEach(t=>{if(t[0]>0&&total>=t[0])tier=t;});
+    if(probation)tier=TIERS[TIERS.length-1];
+    document.querySelectorAll('#calcRows select').forEach(s=>s.disabled=probation);
     document.getElementById('payPct').textContent=tier[2]+'%';
     mkTierPct=tier[2];if(document.getElementById('scSteps').innerHTML)salcalc();
     const rm=KPIS.filter(applies).reduce((a,k)=>a+k.full+k.bonus,0);
     document.getElementById('roleMax').textContent=L(`Tối đa với vai trò ${roleName(role)}: ${fmt(rm)} điểm.`,`Maximum for ${roleName(role)}: ${fmt(rm)} points.`);
     const bl=document.getElementById('bonusLine');
-    if(total>1650){bl.innerHTML=L(`<span class="good-t">Vượt mốc ${fmt(total-1650)} điểm</span>, phần này được quy đổi thành tiền thưởng.`,`<span class="good-t">${fmt(total-1650)} points above the benchmark</span>, converted into a cash bonus.`);}
+    if(probation){bl.innerHTML=L('<span class="good-t">Tháng 1 (thử việc):</span> KPI Marketing được khóa ở 100%, không phụ thuộc số điểm.','<span class="good-t">Month 1 (probation):</span> the Marketing KPI is locked at 100%, regardless of points.');}
+    else if(total>1650){bl.innerHTML=L(`<span class="good-t">Vượt mốc ${fmt(total-1650)} điểm</span>, phần này được quy đổi thành tiền thưởng.`,`<span class="good-t">${fmt(total-1650)} points above the benchmark</span>, converted into a cash bonus.`);}
     else{const next=TIERS.find(t=>t[0]>total);bl.innerHTML=next?L(`Còn <b>${fmt(Math.ceil(next[0]-total))}</b> điểm nữa để lên mức <b>${next[2]}%</b>.`,`<b>${fmt(Math.ceil(next[0]-total))}</b> more points to reach <b>${next[2]}%</b>.`):'';}
     document.getElementById('tiersTbl').innerHTML=TIERS.slice().reverse().map(t=>`<tr class="${t===tier?'hit':''}"><td>${t===tier?'▸ ':''}${t[1][lang==='en'?1:0]}</td><td>${L('từ','from')} ${fmt(t[0])} ${L('điểm','pts')}</td></tr>`).join('');
   }
@@ -1550,10 +1559,11 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
   const money=n=>n.toLocaleString(lang==='en'?'en-US':'vi-VN',{minimumFractionDigits:0,maximumFractionDigits:2});
   function salcalc(){
     const base=Math.max(0,+document.getElementById('scBase').value||0);
-    const mk=+document.getElementById('scMk').value/100;
+    const mk=probation?1:+document.getElementById('scMk').value/100;
+    document.getElementById('scMk').disabled=probation;document.getElementById('scNet').disabled=probation;
     const ad=Math.max(0,+document.getElementById('scDays').value||0);
     const sd=Math.max(0,+document.getElementById('scStd').value||0);
-    const nr=+document.getElementById('scNet').value/100;
+    const nr=probation?0:+document.getElementById('scNet').value/100;
     const warn=document.getElementById('scWarn');
     warn.textContent=sd<=0?L('Ngày công chuẩn phải lớn hơn 0.','Standard working days must be greater than 0.'):(ad>sd?L('Ngày công được trả đang lớn hơn ngày công chuẩn, hãy kiểm tra lại.','Paid days exceed standard days; please check.'):'');
     const adj=base*mk, earned=sd>0?adj*ad/sd:0, hold=earned*nr, fin=earned-hold;
@@ -1579,6 +1589,7 @@ footer{max-width:1160px;margin:0 auto;padding:0 20px 40px;color:var(--ink-2);fon
   ['scBase','scMk','scDays','scStd','scNet'].forEach(id=>document.getElementById(id).addEventListener('input',salcalc));
   document.getElementById('scFromMk').addEventListener('click',()=>{if(mkTierPct!=null){document.getElementById('scMk').value=String(mkTierPct);salcalc();}});
 
+  document.querySelectorAll('.probChk').forEach(c=>c.addEventListener('change',()=>{probation=c.checked;document.querySelectorAll('.probChk').forEach(x=>x.checked=probation);calc();salcalc();}));
   /* role switching */
   function applyRole(){
     document.body.setAttribute('data-role',role);
